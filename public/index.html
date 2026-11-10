@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espace membres, Cabinet Astrolabe</title>
+  <link rel="stylesheet" href="theme.css">
+  <!-- Page hôte de démonstration. Elle imite volontairement une plateforme ancienne
+       (mise en page en tableaux, styles datés) : le widget doit s'y intégrer sans la modifier. -->
+  <style>
+    body { margin: 0; background: #e9edf1; color: #333; font-family: Verdana, Arial, sans-serif; font-size: 12px; }
+    #bandeau { background: #2f4a63; color: #fff; padding: 9px 14px; font-size: 15px; font-weight: bold; }
+    #bandeau small { font-weight: normal; font-size: 11px; color: #c9d6e2; margin-left: 10px; }
+    #menu { background: #d7dee6; border-bottom: 1px solid #aab6c3; padding: 5px 14px; }
+    #menu a { color: #1d3e5e; margin-right: 16px; }
+    table.page { width: 100%; border-collapse: collapse; }
+    td.gauche { width: 190px; vertical-align: top; background: #f3f5f7; border-right: 1px solid #c3ccd6; padding: 10px; }
+    td.gauche b { display: block; margin: 10px 0 4px; color: #2f4a63; }
+    td.gauche a { display: block; color: #1d3e5e; padding: 2px 0; }
+    td.centre { vertical-align: top; padding: 14px 18px; background: #fff; }
+    h1 { font-size: 16px; color: #2f4a63; margin: 0 0 4px; }
+    p.aide { color: #666; margin: 0 0 12px; }
+    table.liste { width: 100%; border-collapse: collapse; }
+    table.liste th { background: #dfe6ed; border: 1px solid #b9c4cf; padding: 5px 7px; text-align: left; }
+    table.liste td { border: 1px solid #d3dae1; padding: 5px 7px; }
+    table.liste tr.pair td { background: #f7f9fb; }
+    form.filtres { background: #f3f5f7; border: 1px solid #c3ccd6; padding: 8px; margin-bottom: 12px; }
+    form.filtres input, form.filtres select { font-size: 11px; margin-right: 8px; }
+    #pied { padding: 10px 14px; color: #8a96a3; font-size: 11px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div id="bandeau">Cabinet Astrolabe <small>Espace membres</small></div>
+  <div id="menu"><a href="#">Accueil</a><a href="#">Annuaire</a><a href="#">Chasseurs de tête</a><a href="#">Agenda</a><a href="#">Mon compte</a></div>
+  <table class="page"><tr>
+    <td class="gauche">
+      <b>Annuaire</b><a href="#">Liste des contacts</a><a href="#">Mes contacts importés</a><a href="#">Suivi des contacts</a>
+      <b>Documents</b><a href="#">Tous les documents</a>
+      <b>Ateliers</b><a href="#">Calendrier</a><a href="#">Inscriptions</a>
+    </td>
+    <td class="centre">
+      <h1>Liste des contacts</h1>
+      <p class="aide">500 contacts dans le réseau. Utilisez les filtres pour affiner votre recherche.</p>
+      <form class="filtres" onsubmit="return false">
+        Nom <input type="text" size="14"> Poste <input type="text" size="14"> Entreprise <input type="text" size="14">
+        <select><option>Tous les membres</option><option>Alumni</option></select>
+        <input type="submit" value="Rechercher">
+      </form>
+      <table class="liste">
+        <tr><th>Nom</th><th>Poste</th><th>Entreprise</th><th>Ajouté par</th></tr>
+        <tr><td>Abadie Yasmine</td><td>Managing Director</td><td>Sopra Steria</td><td>Hélène ROUX</td></tr>
+        <tr class="pair"><td>Marchetti Héloïse</td><td>DRH Groupe</td><td>Sanofi</td><td>Paul MARTINEAU</td></tr>
+        <tr><td>Verdier Octave</td><td>Directeur Financier</td><td>LVMH</td><td>Bruno CAZALS</td></tr>
+        <tr class="pair"><td colspan="4">Page 1 sur 50 &nbsp; <a href="#">Suivant</a></td></tr>
+      </table>
+    </td>
+  </tr></table>
+  <div id="pied">Démonstration préparée pour Capgemini Invent, novembre 2026</div>
+
+  <!-- Intégration du widget : cette seule ligne. -->
+  <script src="iris-widget.js"></script>
+</body>
+</html>

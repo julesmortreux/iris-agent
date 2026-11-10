@@ -1,0 +1,14 @@
+/* Thème du widget Iris. Toutes les couleurs sont ici : changer de charte revient à
+   modifier ce seul fichier. Le widget garde des valeurs de repli s'il est chargé sans thème. */
+:root {
+  --iris-primary: #0070AD;
+  --iris-primary-strong: #005A8C;
+  --iris-link: #0070AD;
+  --iris-ok: #12ABDB;
+  --iris-on-primary-soft: #D6ECF7;
+  --iris-surface: #F5F9FC;
+  --iris-tint: #E6F4FA;
+  --iris-border: #DDE6EE;
+  --iris-text: #1F2A37;
+  --iris-text-soft: #5B6B7C;
+}
