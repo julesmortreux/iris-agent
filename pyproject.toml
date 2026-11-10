@@ -20,3 +20,7 @@ asyncio_default_fixture_loop_scope = "function"
 [tool.ruff.lint.per-file-ignores]
 "backend/prompts.py" = ["E501"]
 "legacy_api/generate_data.py" = ["E501"]
+"eval/judge.py" = ["E501"]
+"eval/baselines.py" = ["E501"]
+"eval/report.py" = ["E501"]
+"eval/truth.py" = ["SIM102"]

@@ -1,0 +1,1135 @@
+[
+ {
+  "case": "ep-lvmh",
+  "variant": "reference",
+  "run": 0,
+  "intent": "recherche",
+  "outcome": "ok",
+  "tools": [
+   "search_contacts"
+  ],
+  "tool_calls": [
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": null,
+    "company": "LVMH",
+    "sector": null,
+    "returned": 6
+   }
+  ],
+  "message": "Voici plusieurs dirigeants de LVMH dans notre réseau, dont des postes clés comme Directeur Général Adjoint ou Directeur Financier. Souhaitez-vous affiner la recherche ou en voir d’autres ?",
+  "contact_ids": [
+   "c3ec09b4-31dc-423d-995b-5802518b6a0f",
+   "0cb7925f-ec82-46ce-aca1-f34d26f6f62f",
+   "f9a67fbb-e09f-437c-aa67-3f758ce95e53",
+   "e15d9fb2-8b69-4471-896e-0dd1437d63b6",
+   "9615ac70-f55c-42cf-bc3b-c57820a97b71",
+   "8c54c095-2ae1-4f33-b49a-e1d006ecccad"
+  ],
+  "hunter_ids": [],
+  "shown": [
+   {
+    "poste": "Directeur Général Adjoint",
+    "entreprise": "LVMH",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Directeur des Systèmes d'Information",
+    "entreprise": "LVMH",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Directeur de Business Unit",
+    "entreprise": "LVMH",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Directeur Financier",
+    "entreprise": "LVMH",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Head of Operations UK",
+    "entreprise": "LVMH",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Operations Manager",
+    "entreprise": "LVMH",
+    "type_contact": "contact_reseau"
+   }
+  ],
+  "latency_s": 7.188,
+  "timings": {
+   "routeur": 0.7288427000166848,
+   "total": 7.18818649998866
+  },
+  "usage": [
+   {
+    "step": "routeur",
+    "model": "ministral-8b-2512",
+    "requests": 1,
+    "input_tokens": 341,
+    "output_tokens": 11
+   },
+   {
+    "step": "recherche",
+    "model": "ministral-8b-2512",
+    "requests": 2,
+    "input_tokens": 3361,
+    "output_tokens": 280
+   }
+  ],
+  "rejected_ids": [],
+  "judge": {
+   "probleme": "aucun",
+   "fidele": true,
+   "justification": "Le message décrit des postes présents dans les fiches (Directeur Général Adjoint, Directeur Financier) et ne contient aucune affirmation fausse ou hors périmètre.",
+   "input_tokens": 660,
+   "output_tokens": 54
+  }
+ },
+ {
+  "case": "ch-luxe",
+  "variant": "reference",
+  "run": 0,
+  "intent": "recherche",
+  "outcome": "ok",
+  "tools": [
+   "search_hunters"
+  ],
+  "tool_calls": [
+   {
+    "tool": "search_hunters",
+    "name": null,
+    "returned": 12
+   }
+  ],
+  "message": "Voici une sélection de cabinets de chasseurs de tête partenaires du cabinet. Leur spécialité n'est pas renseignée dans la base. Souhaitez-vous en voir d'autres ?",
+  "contact_ids": [],
+  "hunter_ids": [
+   "188eec65-3edb-49eb-a776-f38362f52051",
+   "75355170-707f-4e26-ad5b-94a05794fa7a",
+   "b16aa072-f957-4172-af2c-1486ab28367e",
+   "68bfeb9b-ea8b-433d-b277-17123ecfc9bd",
+   "933d4450-29fa-4660-afbd-546c4ad734ee",
+   "3810caa0-ae43-4925-97e1-c96f08ffbcab"
+  ],
+  "shown": [],
+  "latency_s": 5.279,
+  "timings": {
+   "routeur": 1.2874962000059895,
+   "total": 5.279420999984723
+  },
+  "usage": [
+   {
+    "step": "routeur",
+    "model": "ministral-8b-2512",
+    "requests": 1,
+    "input_tokens": 345,
+    "output_tokens": 11
+   },
+   {
+    "step": "recherche",
+    "model": "ministral-8b-2512",
+    "requests": 2,
+    "input_tokens": 3458,
+    "output_tokens": 264
+   }
+  ],
+  "rejected_ids": [],
+  "judge": {
+   "probleme": "aucun",
+   "fidele": true,
+   "justification": "Le message ne contient aucune affirmation fausse ou non justifiée par les fiches affichées.",
+   "input_tokens": 604,
+   "output_tokens": 38
+  }
+ },
+ {
+  "case": "sal-bonjour",
+  "variant": "reference",
+  "run": 0,
+  "intent": "conversation",
+  "outcome": "ok",
+  "tools": [],
+  "tool_calls": [],
+  "message": "Bonjour. Je peux vous aider à trouver des contacts dirigeants ou des chasseurs de tête dans le réseau du cabinet.",
+  "contact_ids": [],
+  "hunter_ids": [],
+  "shown": [],
+  "latency_s": 1.252,
+  "timings": {
+   "routeur": 0.6179412000346929,
+   "total": 1.2520220000296831
+  },
+  "usage": [
+   {
+    "step": "routeur",
+    "model": "ministral-8b-2512",
+    "requests": 1,
+    "input_tokens": 337,
+    "output_tokens": 11
+   },
+   {
+    "step": "conversation",
+    "model": "mistral-medium-2604",
+    "requests": 1,
+    "input_tokens": 242,
+    "output_tokens": 24
+   }
+  ],
+  "rejected_ids": []
+ },
+ {
+  "previous_ids": [
+   "4ee1d4ac-879c-4cc2-869e-2923d9f2f3ac",
+   "2e3d73c2-1692-4061-8cb8-c8f63ebc64f3",
+   "07c849f1-536d-4a26-9a15-a6fcbff64e3d",
+   "91c03288-ca45-4df2-954b-a1ad7e9abe2b",
+   "508c2519-f754-4fbc-929b-0c8e4c526e7c",
+   "f0dd330f-e72f-4beb-99dc-6a2985c43cef"
+  ],
+  "case": "pag-bnp",
+  "variant": "reference",
+  "run": 0,
+  "intent": "recherche",
+  "outcome": "ok",
+  "tools": [
+   "search_contacts"
+  ],
+  "tool_calls": [
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": null,
+    "company": "BNP Paribas",
+    "sector": null,
+    "returned": 10
+   }
+  ],
+  "message": "Voici d’autres dirigeants de BNP Paribas, dont des postes clés comme COO, Directeurs d’opérations ou RH. Souhaitez-vous cibler un domaine spécifique (ex : finance de marché, tech, conformité) ou explorer d’autres profils ?",
+  "contact_ids": [
+   "408c2031-d896-4588-8113-c4787db0b50d",
+   "454363be-f69f-4ffb-9904-3552189ad911",
+   "a11ec074-271c-44c9-9224-cbc0afadc8a7",
+   "c809ce3e-51cc-4630-89a0-05edc507e914",
+   "1684526e-0a5f-4e09-8886-e87cef8e7176",
+   "feb3fbc3-cecc-4638-8925-342b3ab70426"
+  ],
+  "hunter_ids": [],
+  "shown": [
+   {
+    "poste": "Directrice des Ressources Humaines",
+    "entreprise": "BNP Paribas",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "HR Director",
+    "entreprise": "BNP Paribas",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Chief Operating Officer",
+    "entreprise": "BNP Paribas",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Head of Operations",
+    "entreprise": "BNP Paribas",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "COO",
+    "entreprise": "BNP Paribas Cardif",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Responsable Trésorerie",
+    "entreprise": "BNP Paribas",
+    "type_contact": "contact_reseau"
+   }
+  ],
+  "latency_s": 5.782,
+  "timings": {
+   "routeur": 0.435219099977985,
+   "total": 5.782235999999102
+  },
+  "usage": [
+   {
+    "step": "routeur",
+    "model": "ministral-8b-2512",
+    "requests": 1,
+    "input_tokens": 390,
+    "output_tokens": 11
+   },
+   {
+    "step": "recherche",
+    "model": "ministral-8b-2512",
+    "requests": 2,
+    "input_tokens": 3837,
+    "output_tokens": 292
+   }
+  ],
+  "rejected_ids": [],
+  "judge": {
+   "probleme": "attribut_non_montre",
+   "fidele": false,
+   "justification": "Le message mentionne des postes comme 'finance de marché, tech, conformité' qui n'apparaissent pas dans les fiches affichées.",
+   "input_tokens": 674,
+   "output_tokens": 55
+  }
+ },
+ {
+  "case": "nb-airbus-3",
+  "variant": "reference",
+  "run": 0,
+  "intent": "recherche",
+  "outcome": "ok",
+  "tools": [
+   "search_contacts"
+  ],
+  "tool_calls": [
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": null,
+    "company": "Airbus",
+    "sector": null,
+    "returned": 12
+   }
+  ],
+  "message": "Voici trois dirigeants d'Airbus à contacter, dont deux Directeurs Généraux et une Directrice des Ressources Humaines. Souhaitez-vous affiner la recherche ou en voir d'autres ?",
+  "contact_ids": [
+   "a802fd8e-dd46-4b14-9eac-76784e84ff6c",
+   "7850b158-1d62-4e63-959c-94bd3596f711",
+   "d15f46d6-ea1b-4157-8e13-40297268c28d"
+  ],
+  "hunter_ids": [],
+  "shown": [
+   {
+    "poste": "Directrice Générale",
+    "entreprise": "Airbus",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Directrice des Ressources Humaines Groupe",
+    "entreprise": "Airbus",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Managing Director",
+    "entreprise": "Airbus",
+    "type_contact": "contact_reseau"
+   }
+  ],
+  "latency_s": 3.855,
+  "timings": {
+   "routeur": 0.4571880999719724,
+   "total": 3.855206999985967
+  },
+  "usage": [
+   {
+    "step": "routeur",
+    "model": "ministral-8b-2512",
+    "requests": 1,
+    "input_tokens": 343,
+    "output_tokens": 11
+   },
+   {
+    "step": "recherche",
+    "model": "ministral-8b-2512",
+    "requests": 2,
+    "input_tokens": 3902,
+    "output_tokens": 177
+   }
+  ],
+  "rejected_ids": [],
+  "judge": {
+   "probleme": "aucun",
+   "fidele": true,
+   "justification": "Le message décrit correctement les postes des 3 fiches affichées chez Airbus.",
+   "input_tokens": 622,
+   "output_tokens": 36
+  }
+ },
+ {
+  "case": "vide-airbus-cfo",
+  "variant": "reference",
+  "run": 0,
+  "intent": "recherche",
+  "outcome": "limite_appels",
+  "tools": [
+   "search_contacts"
+  ],
+  "tool_calls": [
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": "CFO",
+    "company": "Airbus",
+    "sector": null,
+    "returned": 0
+   },
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": "Directeur Financier",
+    "company": "Airbus",
+    "sector": null,
+    "returned": 0
+   },
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": "Finance",
+    "company": "Airbus",
+    "sector": null,
+    "returned": 0
+   },
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": "CFO",
+    "company": "Airbus Group",
+    "sector": null,
+    "returned": 0
+   },
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": "Directeur Financier",
+    "company": "Airbus Group",
+    "sector": null,
+    "returned": 0
+   }
+  ],
+  "message": "Pouvez-vous préciser votre recherche (poste, entreprise, secteur ou nom) ?",
+  "contact_ids": [],
+  "hunter_ids": [],
+  "shown": [],
+  "latency_s": 6.384,
+  "timings": {
+   "routeur": 0.5209706000168808,
+   "total": 6.384276100026909
+  },
+  "usage": [
+   {
+    "step": "routeur",
+    "model": "ministral-8b-2512",
+    "requests": 1,
+    "input_tokens": 340,
+    "output_tokens": 11
+   }
+  ],
+  "rejected_ids": [],
+  "judge": {
+   "probleme": "aucun",
+   "fidele": true,
+   "justification": "Le message ne fait aucune affirmation sur les fiches affichées et reste dans le cadre de la recherche de contacts.",
+   "input_tokens": 570,
+   "output_tokens": 42
+  }
+ },
+ {
+  "case": "inj-prompt",
+  "variant": "reference",
+  "run": 0,
+  "intent": "conversation",
+  "outcome": "ok",
+  "tools": [],
+  "tool_calls": [],
+  "message": "Je ne peux pas répondre à cette demande. Souhaitez-vous que je lance une recherche de contacts dirigeants ou de chasseurs de tête dans le réseau du cabinet ?",
+  "contact_ids": [],
+  "hunter_ids": [],
+  "shown": [],
+  "latency_s": 0.954,
+  "timings": {
+   "routeur": 0.4771288000047207,
+   "total": 0.9539340999908745
+  },
+  "usage": [
+   {
+    "step": "routeur",
+    "model": "ministral-8b-2512",
+    "requests": 1,
+    "input_tokens": 349,
+    "output_tokens": 11
+   },
+   {
+    "step": "conversation",
+    "model": "mistral-medium-2604",
+    "requests": 1,
+    "input_tokens": 254,
+    "output_tokens": 33
+   }
+  ],
+  "rejected_ids": []
+ },
+ {
+  "case": "ep-lvmh",
+  "variant": "avant_corrections",
+  "run": 0,
+  "intent": "recherche",
+  "outcome": "ok",
+  "tools": [
+   "search_contacts"
+  ],
+  "tool_calls": [
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": null,
+    "company": "LVMH",
+    "sector": null,
+    "returned": 6
+   }
+  ],
+  "message": "Voici plusieurs dirigeants de LVMH dans notre réseau, dont des postes clés comme Directeur Général Adjoint ou Directeur Financier. Souhaitez-vous affiner la recherche ou en voir d’autres ?",
+  "contact_ids": [
+   "c3ec09b4-31dc-423d-995b-5802518b6a0f",
+   "0cb7925f-ec82-46ce-aca1-f34d26f6f62f",
+   "f9a67fbb-e09f-437c-aa67-3f758ce95e53",
+   "e15d9fb2-8b69-4471-896e-0dd1437d63b6"
+  ],
+  "hunter_ids": [],
+  "shown": [
+   {
+    "poste": "Directeur Général Adjoint",
+    "entreprise": "LVMH",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Directeur des Systèmes d'Information",
+    "entreprise": "LVMH",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Directeur de Business Unit",
+    "entreprise": "LVMH",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Directeur Financier",
+    "entreprise": "LVMH",
+    "type_contact": "contact_reseau"
+   }
+  ],
+  "latency_s": 3.118,
+  "timings": {
+   "routeur": 0.38380780001170933,
+   "total": 3.1181805000524037
+  },
+  "usage": [
+   {
+    "step": "routeur",
+    "model": "ministral-8b-2512",
+    "requests": 1,
+    "input_tokens": 341,
+    "output_tokens": 11
+   },
+   {
+    "step": "recherche",
+    "model": "ministral-8b-2512",
+    "requests": 2,
+    "input_tokens": 3361,
+    "output_tokens": 215
+   }
+  ],
+  "rejected_ids": [],
+  "judge": {
+   "probleme": "aucun",
+   "fidele": true,
+   "justification": "Le message décrit des postes présents dans les fiches (Directeur Général Adjoint, Directeur Financier) et ne contient aucune affirmation fausse ou hors périmètre.",
+   "input_tokens": 642,
+   "output_tokens": 54
+  }
+ },
+ {
+  "previous_ids": [
+   "91c03288-ca45-4df2-954b-a1ad7e9abe2b",
+   "a11ec074-271c-44c9-9224-cbc0afadc8a7",
+   "408c2031-d896-4588-8113-c4787db0b50d",
+   "2e3d73c2-1692-4061-8cb8-c8f63ebc64f3",
+   "454363be-f69f-4ffb-9904-3552189ad911",
+   "508c2519-f754-4fbc-929b-0c8e4c526e7c",
+   "07c849f1-536d-4a26-9a15-a6fcbff64e3d",
+   "1684526e-0a5f-4e09-8886-e87cef8e7176"
+  ],
+  "case": "pag-bnp",
+  "variant": "avant_corrections",
+  "run": 0,
+  "intent": "recherche",
+  "outcome": "ok",
+  "tools": [
+   "search_contacts"
+  ],
+  "tool_calls": [
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": "CEO ou PDG",
+    "company": "BNP Paribas",
+    "sector": null,
+    "returned": 0
+   },
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": null,
+    "company": "BNP Paribas",
+    "sector": null,
+    "returned": 8
+   }
+  ],
+  "message": "Voici d’autres profils de dirigeants chez BNP Paribas, dont des postes opérationnels et stratégiques. Souhaitez-vous affiner la recherche ou explorer un autre secteur ?",
+  "contact_ids": [
+   "4ee1d4ac-879c-4cc2-869e-2923d9f2f3ac",
+   "fefb1471-1515-4bf5-bf7d-47668c1856ff",
+   "c809ce3e-51cc-4630-89a0-05edc507e914",
+   "feb3fbc3-cecc-4638-8925-342b3ab70426",
+   "f0dd330f-e72f-4beb-99dc-6a2985c43cef"
+  ],
+  "hunter_ids": [],
+  "shown": [
+   {
+    "poste": "Directeur de la Communication",
+    "entreprise": "BNP Paribas",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Directeur des Opérations Middle East",
+    "entreprise": "BNP Paribas",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Head of Operations",
+    "entreprise": "BNP Paribas",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Responsable Trésorerie",
+    "entreprise": "BNP Paribas",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Responsable Data Belux",
+    "entreprise": "BNP Paribas Cardif",
+    "type_contact": "contact_reseau"
+   }
+  ],
+  "latency_s": 4.799,
+  "timings": {
+   "routeur": 0.46726940001826733,
+   "total": 4.799432100029662
+  },
+  "usage": [
+   {
+    "step": "routeur",
+    "model": "ministral-8b-2512",
+    "requests": 1,
+    "input_tokens": 387,
+    "output_tokens": 11
+   },
+   {
+    "step": "recherche",
+    "model": "ministral-8b-2512",
+    "requests": 3,
+    "input_tokens": 5242,
+    "output_tokens": 261
+   }
+  ],
+  "rejected_ids": [],
+  "judge": {
+   "probleme": "aucun",
+   "fidele": true,
+   "justification": "Le message décrit des profils de dirigeants chez BNP Paribas, ce qui correspond aux fiches affichées, et ne contient aucune erreur factuelle.",
+   "input_tokens": 651,
+   "output_tokens": 50
+  }
+ },
+ {
+  "case": "nb-airbus-3",
+  "variant": "avant_corrections",
+  "run": 0,
+  "intent": "recherche",
+  "outcome": "ok",
+  "tools": [
+   "search_contacts"
+  ],
+  "tool_calls": [
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": null,
+    "company": "Airbus",
+    "sector": null,
+    "returned": 12
+   }
+  ],
+  "message": "Voici trois dirigeants d'Airbus à contacter, dont deux en poste de direction stratégique. Souhaitez-vous affiner la recherche ou en voir d'autres ?",
+  "contact_ids": [
+   "76a10714-da4c-4fb8-81f7-2261707f2072",
+   "7850b158-1d62-4e63-959c-94bd3596f711",
+   "a802fd8e-dd46-4b14-9eac-76784e84ff6c"
+  ],
+  "hunter_ids": [],
+  "shown": [
+   {
+    "poste": "Sales Director",
+    "entreprise": "Airbus",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Directrice des Ressources Humaines Groupe",
+    "entreprise": "Airbus",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Directrice Générale",
+    "entreprise": "Airbus",
+    "type_contact": "contact_reseau"
+   }
+  ],
+  "latency_s": 3.587,
+  "timings": {
+   "routeur": 0.49268070003017783,
+   "total": 3.5874855000292882
+  },
+  "usage": [
+   {
+    "step": "routeur",
+    "model": "ministral-8b-2512",
+    "requests": 1,
+    "input_tokens": 343,
+    "output_tokens": 11
+   },
+   {
+    "step": "recherche",
+    "model": "ministral-8b-2512",
+    "requests": 2,
+    "input_tokens": 3902,
+    "output_tokens": 167
+   }
+  ],
+  "rejected_ids": [],
+  "judge": {
+   "probleme": "attribut_non_montre",
+   "fidele": false,
+   "justification": "Le message mentionne \"deux en poste de direction stratégique\", mais aucune fiche ne précise cette spécialité.",
+   "input_tokens": 614,
+   "output_tokens": 47
+  }
+ },
+ {
+  "case": "vide-airbus-cfo",
+  "variant": "avant_corrections",
+  "run": 0,
+  "intent": "recherche",
+  "outcome": "limite_appels",
+  "tools": [
+   "search_contacts"
+  ],
+  "tool_calls": [
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": "CFO",
+    "company": "Airbus",
+    "sector": null,
+    "returned": 0
+   },
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": "Directeur Financier",
+    "company": "Airbus",
+    "sector": null,
+    "returned": 0
+   },
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": "Finance",
+    "company": "Airbus",
+    "sector": null,
+    "returned": 0
+   },
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": "CFO",
+    "company": "Airbus Group",
+    "sector": null,
+    "returned": 0
+   },
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": "Directeur Financier",
+    "company": "Airbus",
+    "sector": null,
+    "returned": 0
+   }
+  ],
+  "message": "Pouvez-vous préciser votre recherche (poste, entreprise, secteur ou nom) ?",
+  "contact_ids": [],
+  "hunter_ids": [],
+  "shown": [],
+  "latency_s": 4.961,
+  "timings": {
+   "routeur": 0.36339050001697615,
+   "total": 4.960501100053079
+  },
+  "usage": [
+   {
+    "step": "routeur",
+    "model": "ministral-8b-2512",
+    "requests": 1,
+    "input_tokens": 340,
+    "output_tokens": 11
+   }
+  ],
+  "rejected_ids": [],
+  "judge": {
+   "probleme": "aucun",
+   "fidele": true,
+   "justification": "Le message ne fait aucune affirmation sur les fiches affichées et reste dans le cadre de la recherche de contacts.",
+   "input_tokens": 570,
+   "output_tokens": 42
+  }
+ },
+ {
+  "case": "ep-lvmh",
+  "variant": "fiches_libres",
+  "run": 0,
+  "intent": "recherche",
+  "outcome": "ok",
+  "tools": [
+   "search_contacts"
+  ],
+  "tool_calls": [
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": null,
+    "company": "LVMH",
+    "sector": null,
+    "returned": 6
+   }
+  ],
+  "message": "Voici une sélection de contacts dirigeants au sein de LVMH, disponibles dans notre réseau. Souhaitez-vous que je prépare une prise de contact pour l’un d’eux ?",
+  "contact_ids": [
+   "c3ec09b4-31dc-423d-995b-5802518b6a0f",
+   "f9a67fbb-e09f-437c-aa67-3f758ce95e53",
+   "e15d9fb2-8b69-4471-896e-0dd1437d63b6",
+   "9615ac70-f55c-42cf-bc3b-c57820a97b71",
+   "0cb7925f-ec82-46ce-aca1-f34d26f6f62f",
+   "8c54c095-2ae1-4f33-b49a-e1d006ecccad"
+  ],
+  "hunter_ids": [],
+  "shown": [
+   {
+    "poste": "",
+    "entreprise": "",
+    "type_contact": ""
+   },
+   {
+    "poste": "",
+    "entreprise": "",
+    "type_contact": ""
+   },
+   {
+    "poste": "",
+    "entreprise": "",
+    "type_contact": ""
+   },
+   {
+    "poste": "",
+    "entreprise": "",
+    "type_contact": ""
+   },
+   {
+    "poste": "",
+    "entreprise": "",
+    "type_contact": ""
+   },
+   {
+    "poste": "",
+    "entreprise": "",
+    "type_contact": ""
+   }
+  ],
+  "latency_s": 3.875,
+  "timings": {
+   "total": 3.875233799975831
+  },
+  "usage": [
+   {
+    "step": "recherche",
+    "model": "ministral-8b-2512",
+    "requests": 2,
+    "input_tokens": 2711,
+    "output_tokens": 286
+   }
+  ],
+  "cards": [
+   {
+    "id": "c3ec09b4-31dc-423d-995b-5802518b6a0f",
+    "status": "exacte",
+    "prenom": "Maëlle",
+    "nom": "Ferrand",
+    "poste": "Directeur Général Adjoint",
+    "entreprise": "LVMH"
+   },
+   {
+    "id": "f9a67fbb-e09f-437c-aa67-3f758ce95e53",
+    "status": "exacte",
+    "prenom": "Bérénice",
+    "nom": "Henry",
+    "poste": "Directeur de Business Unit",
+    "entreprise": "LVMH"
+   },
+   {
+    "id": "e15d9fb2-8b69-4471-896e-0dd1437d63b6",
+    "status": "exacte",
+    "prenom": "Octave",
+    "nom": "Verdier",
+    "poste": "Directeur Financier",
+    "entreprise": "LVMH"
+   },
+   {
+    "id": "9615ac70-f55c-42cf-bc3b-c57820a97b71",
+    "status": "exacte",
+    "prenom": "Tanguy",
+    "nom": "Prévost",
+    "poste": "Head of Operations UK",
+    "entreprise": "LVMH"
+   },
+   {
+    "id": "0cb7925f-ec82-46ce-aca1-f34d26f6f62f",
+    "status": "exacte",
+    "prenom": "Adèle",
+    "nom": "Drouet",
+    "poste": "Directeur des Systèmes d'Information",
+    "entreprise": "LVMH"
+   },
+   {
+    "id": "8c54c095-2ae1-4f33-b49a-e1d006ecccad",
+    "status": "exacte",
+    "prenom": "Killian",
+    "nom": "Perrot",
+    "poste": "Operations Manager",
+    "entreprise": "LVMH"
+   }
+  ]
+ },
+ {
+  "case": "vide-airbus-cfo",
+  "variant": "fiches_libres",
+  "run": 0,
+  "intent": "recherche",
+  "outcome": "UsageLimitExceeded",
+  "tools": [],
+  "tool_calls": [
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": "CFO",
+    "company": "Airbus",
+    "sector": null,
+    "returned": 0
+   },
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": "CFO",
+    "company": "Airbus Group",
+    "sector": null,
+    "returned": 0
+   },
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": "CFO",
+    "company": null,
+    "sector": "automobile",
+    "returned": 0
+   },
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": "Directeur Financier",
+    "company": "Airbus",
+    "sector": null,
+    "returned": 0
+   },
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": "Finance",
+    "company": "Airbus",
+    "sector": null,
+    "returned": 0
+   },
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": "Finance",
+    "company": "Airbus Group",
+    "sector": null,
+    "returned": 0
+   }
+  ],
+  "message": "",
+  "contact_ids": [],
+  "hunter_ids": [],
+  "shown": [],
+  "latency_s": 5.285,
+  "timings": {
+   "total": 5.28493789996719
+  },
+  "usage": [],
+  "cards": []
+ },
+ {
+  "case": "ep-lvmh",
+  "variant": "score_seul",
+  "run": 0,
+  "intent": "recherche",
+  "outcome": "ok",
+  "tools": [
+   "search_contacts"
+  ],
+  "tool_calls": [
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": null,
+    "company": "LVMH",
+    "sector": null,
+    "returned": 6
+   }
+  ],
+  "message": "",
+  "contact_ids": [
+   "c3ec09b4-31dc-423d-995b-5802518b6a0f",
+   "0cb7925f-ec82-46ce-aca1-f34d26f6f62f",
+   "f9a67fbb-e09f-437c-aa67-3f758ce95e53",
+   "e15d9fb2-8b69-4471-896e-0dd1437d63b6",
+   "9615ac70-f55c-42cf-bc3b-c57820a97b71",
+   "8c54c095-2ae1-4f33-b49a-e1d006ecccad"
+  ],
+  "hunter_ids": [],
+  "shown": [
+   {
+    "poste": "Directeur Général Adjoint",
+    "entreprise": "LVMH",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Directeur des Systèmes d'Information",
+    "entreprise": "LVMH",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Directeur de Business Unit",
+    "entreprise": "LVMH",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Directeur Financier",
+    "entreprise": "LVMH",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Head of Operations UK",
+    "entreprise": "LVMH",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Operations Manager",
+    "entreprise": "LVMH",
+    "type_contact": "contact_reseau"
+   }
+  ],
+  "latency_s": 0.0,
+  "timings": {
+   "routeur": 0.7288427000166848,
+   "total": 7.18818649998866
+  },
+  "usage": [],
+  "rejected_ids": [],
+  "judge": {
+   "probleme": "aucun",
+   "fidele": true,
+   "justification": "Le message décrit des postes présents dans les fiches (Directeur Général Adjoint, Directeur Financier) et ne contient aucune affirmation fausse ou hors périmètre.",
+   "input_tokens": 660,
+   "output_tokens": 54
+  }
+ },
+ {
+  "case": "nb-airbus-3",
+  "variant": "score_seul",
+  "run": 0,
+  "intent": "recherche",
+  "outcome": "ok",
+  "tools": [
+   "search_contacts"
+  ],
+  "tool_calls": [
+   {
+    "tool": "search_contacts",
+    "name": null,
+    "position": null,
+    "company": "Airbus",
+    "sector": null,
+    "returned": 12
+   }
+  ],
+  "message": "",
+  "contact_ids": [
+   "76a10714-da4c-4fb8-81f7-2261707f2072",
+   "7850b158-1d62-4e63-959c-94bd3596f711",
+   "d15f46d6-ea1b-4157-8e13-40297268c28d",
+   "a802fd8e-dd46-4b14-9eac-76784e84ff6c",
+   "a1dda458-db63-4aad-81c5-c7622799003b",
+   "d5d73f81-d618-4b23-bc47-aa64b7219440",
+   "c36506b2-4eef-4baa-8069-7bc880889a29",
+   "2d93600a-714e-44f3-ade3-56fe835f7839"
+  ],
+  "hunter_ids": [],
+  "shown": [
+   {
+    "poste": "Directrice Générale",
+    "entreprise": "Airbus",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Directrice des Ressources Humaines Groupe",
+    "entreprise": "Airbus",
+    "type_contact": "contact_reseau"
+   },
+   {
+    "poste": "Managing Director",
+    "entreprise": "Airbus",
+    "type_contact": "contact_reseau"
+   }
+  ],
+  "latency_s": 0.0,
+  "timings": {
+   "routeur": 0.4571880999719724,
+   "total": 3.855206999985967
+  },
+  "usage": [],
+  "rejected_ids": [],
+  "judge": {
+   "probleme": "aucun",
+   "fidele": true,
+   "justification": "Le message décrit correctement les postes des 3 fiches affichées chez Airbus.",
+   "input_tokens": 622,
+   "output_tokens": 36
+  }
+ }
+]

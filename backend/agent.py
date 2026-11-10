@@ -23,7 +23,7 @@ from pydantic_ai.usage import UsageLimits
 
 from backend import api_client, config
 from backend.prompts import CHAT_PROMPT, ROUTER_PROMPT, SEARCH_PROMPT
-from backend.text import SCOPE_REPLY, clean, within_scope
+from backend.text import SCOPE_REPLY, clean, fix_count_claims, requested_count, within_scope
 
 logger = logging.getLogger(__name__)
 
@@ -40,6 +40,8 @@ HUNTERS_REPLY = ("Voici une sélection de cabinets de chasseurs de tête partena
 PRECISION_REPLY = ("Pouvez-vous préciser votre recherche ? Indiquez un poste, une entreprise, "
                    "un secteur ou un nom.")
 TIMEOUT_REPLY = "La recherche a pris trop de temps. Pouvez-vous préciser un poste ou une entreprise ?"
+NO_RESULT_REPLY = ("Je n'ai trouvé aucun contact joignable pour cette recherche. "
+                   "Souhaitez-vous l'élargir à d'autres postes ou à d'autres entreprises ?")
 LIMIT_REPLY = "Pouvez-vous préciser votre recherche (poste, entreprise, secteur ou nom) ?"
 ERROR_REPLY = "Je n'ai pas pu traiter cette demande. Indiquez un poste, une entreprise ou un secteur."
 DEFAULT_INTRO = "Voici des profils qui correspondent à votre recherche."
@@ -54,6 +56,10 @@ Sector = Literal[
 class Options:
     """Réglages d'une exécution. Les valeurs par défaut sont celles du produit."""
     ranking: api_client.Ranking = 'score'
+    enforce_count: bool = True    # respecter le nombre de résultats demandé par le membre
+    strict_company: bool = True   # ne pas élargir à un secteur quand une entreprise est demandée
+    fix_claims: bool = True       # corriger un nombre annoncé qui contredit les fiches affichées
+    empty_search_limit: Optional[int] = 2  # recherches vides consécutives avant de conclure
 
 
 @dataclass
@@ -65,6 +71,10 @@ class SearchDeps:
     hunters_by_id: dict[str, dict] = field(default_factory=dict)
     tool_calls: list[dict] = field(default_factory=list)
     needs_precision: bool = False
+    requested_count: Optional[int] = None
+    locked_company: Optional[str] = None
+    rejected_ids: list[str] = field(default_factory=list)  # identifiants proposés par le modèle puis écartés
+    empty_searches: int = 0
 
 
 class Intent(BaseModel):
@@ -121,6 +131,20 @@ async def search_contacts(
         ctx.deps.needs_precision = True
         return [{'info': "Aucun critère de recherche. Ne rappelle pas cet outil sans critère : demande au "
                          "membre de préciser un poste, une entreprise, un secteur ou un nom."}]
+    limit = ctx.deps.options.empty_search_limit
+    if limit is not None and ctx.deps.empty_searches >= limit:
+        call['refused'] = True
+        return [{'info': "Plusieurs recherches n'ont rien donné. Ne relance pas de recherche : réponds au membre "
+                         "qu'aucun contact joignable ne correspond et propose-lui d'élargir sa demande."}]
+    if ctx.deps.options.strict_company:
+        locked = ctx.deps.locked_company
+        if locked and not (company and (locked in company.lower() or company.lower() in locked)):
+            call['refused'] = True
+            return [{'info': f"Le membre a demandé l'entreprise « {locked} ». N'élargis pas la recherche à un "
+                             "secteur ou à une autre entreprise. Si aucun contact ne convient, dis-le au membre "
+                             "et propose-lui d'élargir. NE PRÉSENTE AUCUN contact d'une autre entreprise."}]
+        if company and not locked:
+            ctx.deps.locked_company = company.lower()
 
     results = await api_client.search_contacts(
         name=name, position=position, company=company, sector=sector,
@@ -129,6 +153,7 @@ async def search_contacts(
     reachable = [c for c in results if c['linkedin'] or c['telephone'] or c['email']]
     fresh = [c for c in reachable if c['id'] and c['id'] not in ctx.deps.exclude_ids]
     call['returned'] = len(fresh)
+    ctx.deps.empty_searches = 0 if fresh else ctx.deps.empty_searches + 1
     if not fresh:
         if reachable:
             return [{'info': "Tous les contacts de cette recherche ont déjà été présentés. Dis-le au membre "
@@ -162,8 +187,12 @@ TOOLS = [search_contacts, search_hunters]
 
 def keep_known_ids(ctx: RunContext[SearchDeps], reply: SearchReply) -> SearchReply:
     """Validateur de sortie : ne garde que les identifiants réellement renvoyés par les outils."""
-    reply.contact_ids = [i for i in dict.fromkeys(reply.contact_ids) if i in ctx.deps.contacts_by_id][:MAX_SHOWN]
-    reply.hunter_ids = [i for i in dict.fromkeys(reply.hunter_ids) if i in ctx.deps.hunters_by_id][:MAX_SHOWN]
+    deps = ctx.deps
+    deps.rejected_ids = [i for i in reply.contact_ids if i not in deps.contacts_by_id]
+    deps.rejected_ids += [i for i in reply.hunter_ids if i not in deps.hunters_by_id]
+    limit = min(MAX_SHOWN, deps.requested_count or MAX_SHOWN)
+    reply.contact_ids = [i for i in dict.fromkeys(reply.contact_ids) if i in deps.contacts_by_id][:limit]
+    reply.hunter_ids = [i for i in dict.fromkeys(reply.hunter_ids) if i in deps.hunters_by_id][:limit]
     return reply
 
 
@@ -218,6 +247,7 @@ class Trace:
     timings: dict[str, float] = field(default_factory=dict)
     usage: list[dict] = field(default_factory=list)
     outcome: str = 'ok'
+    rejected_ids: list[str] = field(default_factory=list)
 
     def add_usage(self, step: str, model: str, result) -> None:
         usage = result.usage() if callable(result.usage) else result.usage
@@ -262,7 +292,8 @@ async def _chat(message: str, history: list[dict], trace: Trace) -> dict:
 
 
 async def _search(message: str, history: list[dict], exclude_ids: list[str], options: Options, trace: Trace) -> dict:
-    deps = SearchDeps(exclude_ids=set(exclude_ids), options=options)
+    deps = SearchDeps(exclude_ids=set(exclude_ids), options=options,
+                      requested_count=requested_count(message) if options.enforce_count else None)
     trace.tool_calls = deps.tool_calls
     try:
         result = await asyncio.wait_for(
@@ -277,7 +308,9 @@ async def _search(message: str, history: list[dict], exclude_ids: list[str], opt
     except UsageLimitExceeded:
         logger.warning("Recherche interrompue (trop d'appels au modèle)")
         trace.outcome = 'limite_appels'
-        return _reply(LIMIT_REPLY, trace)
+        searched = [c for c in deps.tool_calls if not c.get('refused')]
+        nothing_found = bool(searched) and not any(c.get('returned') for c in searched)
+        return _reply(NO_RESULT_REPLY if nothing_found and not deps.needs_precision else LIMIT_REPLY, trace)
     except Exception:
         logger.exception("Échec de la recherche")
         trace.outcome = 'erreur'
@@ -285,6 +318,7 @@ async def _search(message: str, history: list[dict], exclude_ids: list[str], opt
 
     trace.add_usage('recherche', config.MISTRAL_MODEL, result)
     reply = result.output
+    trace.rejected_ids = deps.rejected_ids
     contacts = [{k: deps.contacts_by_id[i][k] for k in _CONTACT_FIELDS} for i in reply.contact_ids]
     hunters = [{k: deps.hunters_by_id[i][k] for k in _HUNTER_FIELDS} for i in reply.hunter_ids]
     if deps.needs_precision and not (contacts or hunters):
@@ -293,6 +327,8 @@ async def _search(message: str, history: list[dict], exclude_ids: list[str], opt
     message_out = HUNTERS_REPLY if hunters and not contacts else clean(reply.message)
     if contacts and not message_out:
         message_out = DEFAULT_INTRO
+    if options.fix_claims and contacts:
+        message_out = fix_count_claims(message_out, len(contacts))
     return _reply(message_out, trace, contacts, hunters)
 
 

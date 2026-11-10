@@ -292,7 +292,7 @@ def main():
     }
     for path, data in outputs.items():
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding='utf-8')
+        path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding='utf-8', newline='\n')
     reachable = sum(t['reachable'] for t in truth.values())
     print(f"{len(contacts)} contacts ({reachable} joignables), {len(hunters)} cabinets")
 

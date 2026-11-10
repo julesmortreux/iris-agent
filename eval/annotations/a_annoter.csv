@@ -1,0 +1,64 @@
+﻿cle;reponse_a_evaluer;verdict_humain (fidele ou infidele)
+avant_corrections|pag-bnp|0;"DEMANDE DU MEMBRE : donne m'en d'autres
+MESSAGE DE L'ASSISTANTE : Voici d’autres profils de dirigeants chez BNP Paribas, dont des postes opérationnels et stratégiques. Souhaitez-vous affiner la recherche ou explorer un autre secteur ?
+
+FICHES AFFICHÉES (5) :
+- Directeur de la Communication, BNP Paribas
+- Directeur des Opérations Middle East, BNP Paribas
+- Head of Operations, BNP Paribas
+- Responsable Trésorerie, BNP Paribas
+- Responsable Data Belux, BNP Paribas Cardif";
+avant_corrections|vide-airbus-cfo|0;"DEMANDE DU MEMBRE : un CFO chez Airbus
+MESSAGE DE L'ASSISTANTE : Pouvez-vous préciser votre recherche (poste, entreprise, secteur ou nom) ?
+
+FICHES AFFICHÉES : aucune.";
+reference|ch-luxe|0;"DEMANDE DU MEMBRE : un chasseur de têtes spécialisé dans le luxe
+MESSAGE DE L'ASSISTANTE : Voici une sélection de cabinets de chasseurs de tête partenaires du cabinet. Leur spécialité n'est pas renseignée dans la base. Souhaitez-vous en voir d'autres ?
+
+FICHES AFFICHÉES : 6 cabinets de chasseurs de tête, sans spécialité indiquée.";
+reference|ep-lvmh|0;"DEMANDE DU MEMBRE : des contacts chez LVMH
+MESSAGE DE L'ASSISTANTE : Voici plusieurs dirigeants de LVMH dans notre réseau, dont des postes clés comme Directeur Général Adjoint ou Directeur Financier. Souhaitez-vous affiner la recherche ou en voir d’autres ?
+
+FICHES AFFICHÉES (6) :
+- Directeur Général Adjoint, LVMH
+- Directeur des Systèmes d'Information, LVMH
+- Directeur de Business Unit, LVMH
+- Directeur Financier, LVMH
+- Head of Operations UK, LVMH
+- Operations Manager, LVMH";
+reference|vide-airbus-cfo|0;"DEMANDE DU MEMBRE : un CFO chez Airbus
+MESSAGE DE L'ASSISTANTE : Pouvez-vous préciser votre recherche (poste, entreprise, secteur ou nom) ?
+
+FICHES AFFICHÉES : aucune.";
+avant_corrections|nb-airbus-3|0;"DEMANDE DU MEMBRE : donne-moi 3 contacts chez Airbus
+MESSAGE DE L'ASSISTANTE : Voici trois dirigeants d'Airbus à contacter, dont deux en poste de direction stratégique. Souhaitez-vous affiner la recherche ou en voir d'autres ?
+
+FICHES AFFICHÉES (3) :
+- Sales Director, Airbus
+- Directrice des Ressources Humaines Groupe, Airbus
+- Directrice Générale, Airbus";
+reference|nb-airbus-3|0;"DEMANDE DU MEMBRE : donne-moi 3 contacts chez Airbus
+MESSAGE DE L'ASSISTANTE : Voici trois dirigeants d'Airbus à contacter, dont deux Directeurs Généraux et une Directrice des Ressources Humaines. Souhaitez-vous affiner la recherche ou en voir d'autres ?
+
+FICHES AFFICHÉES (3) :
+- Directrice Générale, Airbus
+- Directrice des Ressources Humaines Groupe, Airbus
+- Managing Director, Airbus";
+reference|pag-bnp|0;"DEMANDE DU MEMBRE : donne m'en d'autres
+MESSAGE DE L'ASSISTANTE : Voici d’autres dirigeants de BNP Paribas, dont des postes clés comme COO, Directeurs d’opérations ou RH. Souhaitez-vous cibler un domaine spécifique (ex : finance de marché, tech, conformité) ou explorer d’autres profils ?
+
+FICHES AFFICHÉES (6) :
+- Directrice des Ressources Humaines, BNP Paribas
+- HR Director, BNP Paribas
+- Chief Operating Officer, BNP Paribas
+- Head of Operations, BNP Paribas
+- COO, BNP Paribas Cardif
+- Responsable Trésorerie, BNP Paribas";
+avant_corrections|ep-lvmh|0;"DEMANDE DU MEMBRE : des contacts chez LVMH
+MESSAGE DE L'ASSISTANTE : Voici plusieurs dirigeants de LVMH dans notre réseau, dont des postes clés comme Directeur Général Adjoint ou Directeur Financier. Souhaitez-vous affiner la recherche ou en voir d’autres ?
+
+FICHES AFFICHÉES (4) :
+- Directeur Général Adjoint, LVMH
+- Directeur des Systèmes d'Information, LVMH
+- Directeur de Business Unit, LVMH
+- Directeur Financier, LVMH";

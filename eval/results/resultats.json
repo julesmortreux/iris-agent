@@ -1,0 +1,2027 @@
+{
+ "empreinte_du_code": "09d97d008d637514",
+ "modeles": {
+  "recherche": "ministral-8b-2512",
+  "conversation": "mistral-medium-2604",
+  "juge": "mistral-medium-2604"
+ },
+ "executions_par_cas": 1,
+ "cas": 7,
+ "variantes": {
+  "avant_corrections": {
+   "executions": 4,
+   "metriques": {
+    "routage": {
+     "moyenne": 1.0,
+     "ic95": [
+      1.0,
+      1.0
+     ],
+     "cas": 4
+    },
+    "outil": {
+     "moyenne": 1.0,
+     "ic95": [
+      1.0,
+      1.0
+     ],
+     "cas": 4
+    },
+    "precision": {
+     "moyenne": 1,
+     "ic95": [
+      1,
+      1
+     ],
+     "cas": 3
+    },
+    "precision_stricte": {
+     "moyenne": 0.8,
+     "ic95": [
+      0.4,
+      1
+     ],
+     "cas": 3
+    },
+    "france": {
+     "moyenne": 0.8666666666666667,
+     "ic95": [
+      0.6,
+      1
+     ],
+     "cas": 3
+    },
+    "ndcg": {
+     "moyenne": 0.6296641965809918,
+     "ic95": [
+      0.22795827394478543,
+      0.9348339333804152
+     ],
+     "cas": 4
+    },
+    "reponse_utile": {
+     "moyenne": 0.75,
+     "ic95": [
+      0.25,
+      1.0
+     ],
+     "cas": 4
+    },
+    "ids_inventes_par_le_modele": {
+     "moyenne": 0.0,
+     "ic95": [
+      0.0,
+      0.0
+     ],
+     "cas": 3
+    },
+    "message_fidele": {
+     "moyenne": 0.75,
+     "ic95": [
+      0.25,
+      1.0
+     ],
+     "cas": 4
+    },
+    "latence_s": {
+     "moyenne": 4.11625,
+     "ic95": [
+      3.3525,
+      4.880000000000001
+     ],
+     "cas": 4
+    },
+    "tokens": {
+     "moyenne": 3650.75,
+     "ic95": [
+      1369.0,
+      5407.75
+     ],
+     "cas": 4
+    },
+    "cout_usd": {
+     "moyenne": 0.0005476125,
+     "ic95": [
+      0.00020535,
+      0.0008111625
+     ],
+     "cas": 4
+    },
+    "echec_technique": {
+     "moyenne": 0.25,
+     "ic95": [
+      0.0,
+      0.75
+     ],
+     "cas": 4
+    },
+    "sans_doublon": {
+     "moyenne": 1.0,
+     "ic95": [
+      1.0,
+      1.0
+     ],
+     "cas": 1
+    },
+    "nombre_respecte": {
+     "moyenne": 1.0,
+     "ic95": [
+      1.0,
+      1.0
+     ],
+     "cas": 1
+    }
+   },
+   "latence_p50_s": 4.799,
+   "latence_p95_s": 4.961,
+   "stabilite": {
+    "jaccard": null,
+    "cas_jaccard": 0,
+    "intention_constante": 1.0
+   },
+   "par_famille": {
+    "entreprise_poste": {
+     "routage": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "outil": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "precision": {
+      "moyenne": 1,
+      "ic95": [
+       1,
+       1
+      ],
+      "cas": 1
+     },
+     "precision_stricte": {
+      "moyenne": 1,
+      "ic95": [
+       1,
+       1
+      ],
+      "cas": 1
+     },
+     "france": {
+      "moyenne": 1,
+      "ic95": [
+       1,
+       1
+      ],
+      "cas": 1
+     },
+     "ndcg": {
+      "moyenne": 0.9118330957791417,
+      "ic95": [
+       0.9118330957791417,
+       0.9118330957791417
+      ],
+      "cas": 1
+     },
+     "reponse_utile": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "ids_inventes_par_le_modele": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "message_fidele": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "latence_s": {
+      "moyenne": 3.118,
+      "ic95": [
+       3.118,
+       3.118
+      ],
+      "cas": 1
+     },
+     "tokens": {
+      "moyenne": 3928.0,
+      "ic95": [
+       3928.0,
+       3928.0
+      ],
+      "cas": 1
+     },
+     "cout_usd": {
+      "moyenne": 0.0005892,
+      "ic95": [
+       0.0005892,
+       0.0005892
+      ],
+      "cas": 1
+     },
+     "echec_technique": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     }
+    },
+    "pagination": {
+     "routage": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "outil": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "precision": {
+      "moyenne": 1,
+      "ic95": [
+       1,
+       1
+      ],
+      "cas": 1
+     },
+     "precision_stricte": {
+      "moyenne": 0.4,
+      "ic95": [
+       0.4,
+       0.4
+      ],
+      "cas": 1
+     },
+     "france": {
+      "moyenne": 0.6,
+      "ic95": [
+       0.6,
+       0.6
+      ],
+      "cas": 1
+     },
+     "ndcg": {
+      "moyenne": 0.9578347709816888,
+      "ic95": [
+       0.9578347709816888,
+       0.9578347709816888
+      ],
+      "cas": 1
+     },
+     "reponse_utile": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "sans_doublon": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "ids_inventes_par_le_modele": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "message_fidele": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "latence_s": {
+      "moyenne": 4.799,
+      "ic95": [
+       4.799,
+       4.799
+      ],
+      "cas": 1
+     },
+     "tokens": {
+      "moyenne": 5901.0,
+      "ic95": [
+       5901.0,
+       5901.0
+      ],
+      "cas": 1
+     },
+     "cout_usd": {
+      "moyenne": 0.0008851499999999999,
+      "ic95": [
+       0.0008851499999999999,
+       0.0008851499999999999
+      ],
+      "cas": 1
+     },
+     "echec_technique": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     }
+    },
+    "piege_nombre": {
+     "routage": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "outil": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "precision": {
+      "moyenne": 1,
+      "ic95": [
+       1,
+       1
+      ],
+      "cas": 1
+     },
+     "precision_stricte": {
+      "moyenne": 1,
+      "ic95": [
+       1,
+       1
+      ],
+      "cas": 1
+     },
+     "france": {
+      "moyenne": 1,
+      "ic95": [
+       1,
+       1
+      ],
+      "cas": 1
+     },
+     "ndcg": {
+      "moyenne": 0.6489889195631368,
+      "ic95": [
+       0.6489889195631368,
+       0.6489889195631368
+      ],
+      "cas": 1
+     },
+     "reponse_utile": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "nombre_respecte": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "ids_inventes_par_le_modele": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "message_fidele": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "latence_s": {
+      "moyenne": 3.587,
+      "ic95": [
+       3.587,
+       3.587
+      ],
+      "cas": 1
+     },
+     "tokens": {
+      "moyenne": 4423.0,
+      "ic95": [
+       4423.0,
+       4423.0
+      ],
+      "cas": 1
+     },
+     "cout_usd": {
+      "moyenne": 0.00066345,
+      "ic95": [
+       0.00066345,
+       0.00066345
+      ],
+      "cas": 1
+     },
+     "echec_technique": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     }
+    },
+    "piege_sans_resultat": {
+     "routage": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "outil": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "ndcg": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "reponse_utile": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "message_fidele": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "latence_s": {
+      "moyenne": 4.961,
+      "ic95": [
+       4.961,
+       4.961
+      ],
+      "cas": 1
+     },
+     "tokens": {
+      "moyenne": 351.0,
+      "ic95": [
+       351.0,
+       351.0
+      ],
+      "cas": 1
+     },
+     "cout_usd": {
+      "moyenne": 5.265e-05,
+      "ic95": [
+       5.265e-05,
+       5.265e-05
+      ],
+      "cas": 1
+     },
+     "echec_technique": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     }
+    }
+   }
+  },
+  "fiches_libres": {
+   "executions": 2,
+   "metriques": {
+    "routage": {
+     "moyenne": 1.0,
+     "ic95": [
+      1.0,
+      1.0
+     ],
+     "cas": 2
+    },
+    "outil": {
+     "moyenne": 0.5,
+     "ic95": [
+      0.0,
+      1.0
+     ],
+     "cas": 2
+    },
+    "precision": {
+     "moyenne": 1,
+     "ic95": [
+      1,
+      1
+     ],
+     "cas": 1
+    },
+    "precision_stricte": {
+     "moyenne": 0.6666666666666666,
+     "ic95": [
+      0.6666666666666666,
+      0.6666666666666666
+     ],
+     "cas": 1
+    },
+    "france": {
+     "moyenne": 0.8333333333333334,
+     "ic95": [
+      0.8333333333333334,
+      0.8333333333333334
+     ],
+     "cas": 1
+    },
+    "ndcg": {
+     "moyenne": 0.4948001447094102,
+     "ic95": [
+      0.0,
+      0.9896002894188204
+     ],
+     "cas": 2
+    },
+    "reponse_utile": {
+     "moyenne": 0.5,
+     "ic95": [
+      0.0,
+      1.0
+     ],
+     "cas": 2
+    },
+    "fiches_inventees": {
+     "moyenne": 0,
+     "ic95": [
+      0,
+      0
+     ],
+     "cas": 1
+    },
+    "fiches_alterees": {
+     "moyenne": 0,
+     "ic95": [
+      0,
+      0
+     ],
+     "cas": 1
+    },
+    "latence_s": {
+     "moyenne": 4.58,
+     "ic95": [
+      3.875,
+      5.285
+     ],
+     "cas": 2
+    },
+    "tokens": {
+     "moyenne": 1498.5,
+     "ic95": [
+      0.0,
+      2997.0
+     ],
+     "cas": 2
+    },
+    "cout_usd": {
+     "moyenne": 0.00022477499999999997,
+     "ic95": [
+      0.0,
+      0.00044954999999999995
+     ],
+     "cas": 2
+    },
+    "echec_technique": {
+     "moyenne": 0.5,
+     "ic95": [
+      0.0,
+      1.0
+     ],
+     "cas": 2
+    }
+   },
+   "latence_p50_s": 3.875,
+   "latence_p95_s": 5.285,
+   "stabilite": {
+    "jaccard": null,
+    "cas_jaccard": 0,
+    "intention_constante": 1.0
+   },
+   "par_famille": {
+    "entreprise_poste": {
+     "routage": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "outil": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "precision": {
+      "moyenne": 1,
+      "ic95": [
+       1,
+       1
+      ],
+      "cas": 1
+     },
+     "precision_stricte": {
+      "moyenne": 0.6666666666666666,
+      "ic95": [
+       0.6666666666666666,
+       0.6666666666666666
+      ],
+      "cas": 1
+     },
+     "france": {
+      "moyenne": 0.8333333333333334,
+      "ic95": [
+       0.8333333333333334,
+       0.8333333333333334
+      ],
+      "cas": 1
+     },
+     "ndcg": {
+      "moyenne": 0.9896002894188204,
+      "ic95": [
+       0.9896002894188204,
+       0.9896002894188204
+      ],
+      "cas": 1
+     },
+     "reponse_utile": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "fiches_inventees": {
+      "moyenne": 0,
+      "ic95": [
+       0,
+       0
+      ],
+      "cas": 1
+     },
+     "fiches_alterees": {
+      "moyenne": 0,
+      "ic95": [
+       0,
+       0
+      ],
+      "cas": 1
+     },
+     "latence_s": {
+      "moyenne": 3.875,
+      "ic95": [
+       3.875,
+       3.875
+      ],
+      "cas": 1
+     },
+     "tokens": {
+      "moyenne": 2997.0,
+      "ic95": [
+       2997.0,
+       2997.0
+      ],
+      "cas": 1
+     },
+     "cout_usd": {
+      "moyenne": 0.00044954999999999995,
+      "ic95": [
+       0.00044954999999999995,
+       0.00044954999999999995
+      ],
+      "cas": 1
+     },
+     "echec_technique": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     }
+    },
+    "piege_sans_resultat": {
+     "routage": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "outil": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "ndcg": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "reponse_utile": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "latence_s": {
+      "moyenne": 5.285,
+      "ic95": [
+       5.285,
+       5.285
+      ],
+      "cas": 1
+     },
+     "tokens": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "cout_usd": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "echec_technique": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     }
+    }
+   }
+  },
+  "reference": {
+   "executions": 7,
+   "metriques": {
+    "routage": {
+     "moyenne": 1.0,
+     "ic95": [
+      1.0,
+      1.0
+     ],
+     "cas": 6
+    },
+    "outil": {
+     "moyenne": 1.0,
+     "ic95": [
+      1.0,
+      1.0
+     ],
+     "cas": 6
+    },
+    "precision": {
+     "moyenne": 1,
+     "ic95": [
+      1,
+      1
+     ],
+     "cas": 3
+    },
+    "precision_stricte": {
+     "moyenne": 0.7777777777777778,
+     "ic95": [
+      0.6666666666666666,
+      1
+     ],
+     "cas": 3
+    },
+    "france": {
+     "moyenne": 0.9444444444444444,
+     "ic95": [
+      0.8333333333333334,
+      1
+     ],
+     "cas": 3
+    },
+    "ndcg": {
+     "moyenne": 0.6527356085722403,
+     "ic95": [
+      0.24048837868145614,
+      0.9809767573629122
+     ],
+     "cas": 4
+    },
+    "reponse_utile": {
+     "moyenne": 0.75,
+     "ic95": [
+      0.25,
+      1.0
+     ],
+     "cas": 4
+    },
+    "ids_inventes_par_le_modele": {
+     "moyenne": 0.0,
+     "ic95": [
+      0.0,
+      0.0
+     ],
+     "cas": 4
+    },
+    "message_fidele": {
+     "moyenne": 0.8,
+     "ic95": [
+      0.4,
+      1.0
+     ],
+     "cas": 5
+    },
+    "latence_s": {
+     "moyenne": 4.384857142857143,
+     "ic95": [
+      2.662857142857143,
+      6.011142857142858
+     ],
+     "cas": 7
+    },
+    "tokens": {
+     "moyenne": 2663.714285714286,
+     "ic95": [
+      1145.5714285714287,
+      3884.714285714286
+     ],
+     "cas": 7
+    },
+    "cout_usd": {
+     "moyenne": 0.0005550642857142858,
+     "ic95": [
+      0.0003785785714285714,
+      0.0006586285714285714
+     ],
+     "cas": 7
+    },
+    "echec_technique": {
+     "moyenne": 0.14285714285714285,
+     "ic95": [
+      0.0,
+      0.42857142857142855
+     ],
+     "cas": 7
+    },
+    "cabinets": {
+     "moyenne": 1.0,
+     "ic95": [
+      1.0,
+      1.0
+     ],
+     "cas": 1
+    },
+    "texte_conforme": {
+     "moyenne": 1.0,
+     "ic95": [
+      1.0,
+      1.0
+     ],
+     "cas": 2
+    },
+    "vide_attendu": {
+     "moyenne": 1.0,
+     "ic95": [
+      1.0,
+      1.0
+     ],
+     "cas": 2
+    },
+    "sans_doublon": {
+     "moyenne": 1.0,
+     "ic95": [
+      1.0,
+      1.0
+     ],
+     "cas": 1
+    },
+    "nombre_respecte": {
+     "moyenne": 1.0,
+     "ic95": [
+      1.0,
+      1.0
+     ],
+     "cas": 1
+    }
+   },
+   "latence_p50_s": 5.279,
+   "latence_p95_s": 7.188,
+   "stabilite": {
+    "jaccard": null,
+    "cas_jaccard": 0,
+    "intention_constante": 1.0
+   },
+   "par_famille": {
+    "chasseurs": {
+     "routage": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "outil": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "cabinets": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "texte_conforme": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "ids_inventes_par_le_modele": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "message_fidele": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "latence_s": {
+      "moyenne": 5.279,
+      "ic95": [
+       5.279,
+       5.279
+      ],
+      "cas": 1
+     },
+     "tokens": {
+      "moyenne": 4078.0,
+      "ic95": [
+       4078.0,
+       4078.0
+      ],
+      "cas": 1
+     },
+     "cout_usd": {
+      "moyenne": 0.0006117,
+      "ic95": [
+       0.0006117,
+       0.0006117
+      ],
+      "cas": 1
+     },
+     "echec_technique": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     }
+    },
+    "entreprise_poste": {
+     "routage": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "outil": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "precision": {
+      "moyenne": 1,
+      "ic95": [
+       1,
+       1
+      ],
+      "cas": 1
+     },
+     "precision_stricte": {
+      "moyenne": 0.6666666666666666,
+      "ic95": [
+       0.6666666666666666,
+       0.6666666666666666
+      ],
+      "cas": 1
+     },
+     "france": {
+      "moyenne": 0.8333333333333334,
+      "ic95": [
+       0.8333333333333334,
+       0.8333333333333334
+      ],
+      "cas": 1
+     },
+     "ndcg": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "reponse_utile": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "ids_inventes_par_le_modele": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "message_fidele": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "latence_s": {
+      "moyenne": 7.188,
+      "ic95": [
+       7.188,
+       7.188
+      ],
+      "cas": 1
+     },
+     "tokens": {
+      "moyenne": 3993.0,
+      "ic95": [
+       3993.0,
+       3993.0
+      ],
+      "cas": 1
+     },
+     "cout_usd": {
+      "moyenne": 0.00059895,
+      "ic95": [
+       0.00059895,
+       0.00059895
+      ],
+      "cas": 1
+     },
+     "echec_technique": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     }
+    },
+    "injection": {
+     "vide_attendu": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "texte_conforme": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "latence_s": {
+      "moyenne": 0.954,
+      "ic95": [
+       0.954,
+       0.954
+      ],
+      "cas": 1
+     },
+     "tokens": {
+      "moyenne": 647.0,
+      "ic95": [
+       647.0,
+       647.0
+      ],
+      "cas": 1
+     },
+     "cout_usd": {
+      "moyenne": 0.0006825000000000001,
+      "ic95": [
+       0.0006825000000000001,
+       0.0006825000000000001
+      ],
+      "cas": 1
+     },
+     "echec_technique": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     }
+    },
+    "pagination": {
+     "routage": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "outil": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "precision": {
+      "moyenne": 1,
+      "ic95": [
+       1,
+       1
+      ],
+      "cas": 1
+     },
+     "precision_stricte": {
+      "moyenne": 0.6666666666666666,
+      "ic95": [
+       0.6666666666666666,
+       0.6666666666666666
+      ],
+      "cas": 1
+     },
+     "france": {
+      "moyenne": 1,
+      "ic95": [
+       1,
+       1
+      ],
+      "cas": 1
+     },
+     "ndcg": {
+      "moyenne": 0.9619535147258246,
+      "ic95": [
+       0.9619535147258246,
+       0.9619535147258246
+      ],
+      "cas": 1
+     },
+     "reponse_utile": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "sans_doublon": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "ids_inventes_par_le_modele": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "message_fidele": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "latence_s": {
+      "moyenne": 5.782,
+      "ic95": [
+       5.782,
+       5.782
+      ],
+      "cas": 1
+     },
+     "tokens": {
+      "moyenne": 4530.0,
+      "ic95": [
+       4530.0,
+       4530.0
+      ],
+      "cas": 1
+     },
+     "cout_usd": {
+      "moyenne": 0.0006795,
+      "ic95": [
+       0.0006795,
+       0.0006795
+      ],
+      "cas": 1
+     },
+     "echec_technique": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     }
+    },
+    "piege_nombre": {
+     "routage": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "outil": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "precision": {
+      "moyenne": 1,
+      "ic95": [
+       1,
+       1
+      ],
+      "cas": 1
+     },
+     "precision_stricte": {
+      "moyenne": 1,
+      "ic95": [
+       1,
+       1
+      ],
+      "cas": 1
+     },
+     "france": {
+      "moyenne": 1,
+      "ic95": [
+       1,
+       1
+      ],
+      "cas": 1
+     },
+     "ndcg": {
+      "moyenne": 0.6489889195631368,
+      "ic95": [
+       0.6489889195631368,
+       0.6489889195631368
+      ],
+      "cas": 1
+     },
+     "reponse_utile": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "nombre_respecte": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "ids_inventes_par_le_modele": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "message_fidele": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "latence_s": {
+      "moyenne": 3.855,
+      "ic95": [
+       3.855,
+       3.855
+      ],
+      "cas": 1
+     },
+     "tokens": {
+      "moyenne": 4433.0,
+      "ic95": [
+       4433.0,
+       4433.0
+      ],
+      "cas": 1
+     },
+     "cout_usd": {
+      "moyenne": 0.00066495,
+      "ic95": [
+       0.00066495,
+       0.00066495
+      ],
+      "cas": 1
+     },
+     "echec_technique": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     }
+    },
+    "piege_sans_resultat": {
+     "routage": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "outil": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "ndcg": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "reponse_utile": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "message_fidele": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "latence_s": {
+      "moyenne": 6.384,
+      "ic95": [
+       6.384,
+       6.384
+      ],
+      "cas": 1
+     },
+     "tokens": {
+      "moyenne": 351.0,
+      "ic95": [
+       351.0,
+       351.0
+      ],
+      "cas": 1
+     },
+     "cout_usd": {
+      "moyenne": 5.265e-05,
+      "ic95": [
+       5.265e-05,
+       5.265e-05
+      ],
+      "cas": 1
+     },
+     "echec_technique": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     }
+    },
+    "salutation": {
+     "routage": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "outil": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "vide_attendu": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "latence_s": {
+      "moyenne": 1.252,
+      "ic95": [
+       1.252,
+       1.252
+      ],
+      "cas": 1
+     },
+     "tokens": {
+      "moyenne": 614.0,
+      "ic95": [
+       614.0,
+       614.0
+      ],
+      "cas": 1
+     },
+     "cout_usd": {
+      "moyenne": 0.0005951999999999999,
+      "ic95": [
+       0.0005951999999999999,
+       0.0005951999999999999
+      ],
+      "cas": 1
+     },
+     "echec_technique": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     }
+    }
+   }
+  },
+  "score_seul": {
+   "executions": 2,
+   "metriques": {
+    "routage": {
+     "moyenne": 1.0,
+     "ic95": [
+      1.0,
+      1.0
+     ],
+     "cas": 2
+    },
+    "outil": {
+     "moyenne": 1.0,
+     "ic95": [
+      1.0,
+      1.0
+     ],
+     "cas": 2
+    },
+    "precision": {
+     "moyenne": 0.9375,
+     "ic95": [
+      0.875,
+      1
+     ],
+     "cas": 2
+    },
+    "precision_stricte": {
+     "moyenne": 0.6458333333333333,
+     "ic95": [
+      0.625,
+      0.6666666666666666
+     ],
+     "cas": 2
+    },
+    "france": {
+     "moyenne": 0.8541666666666667,
+     "ic95": [
+      0.8333333333333334,
+      0.875
+     ],
+     "cas": 2
+    },
+    "ndcg": {
+     "moyenne": 0.9830801837013625,
+     "ic95": [
+      0.966160367402725,
+      1.0
+     ],
+     "cas": 2
+    },
+    "reponse_utile": {
+     "moyenne": 1.0,
+     "ic95": [
+      1.0,
+      1.0
+     ],
+     "cas": 2
+    },
+    "ids_inventes_par_le_modele": {
+     "moyenne": 0.0,
+     "ic95": [
+      0.0,
+      0.0
+     ],
+     "cas": 2
+    },
+    "message_fidele": {
+     "moyenne": 1.0,
+     "ic95": [
+      1.0,
+      1.0
+     ],
+     "cas": 2
+    },
+    "latence_s": {
+     "moyenne": 0.0,
+     "ic95": [
+      0.0,
+      0.0
+     ],
+     "cas": 2
+    },
+    "tokens": {
+     "moyenne": 0.0,
+     "ic95": [
+      0.0,
+      0.0
+     ],
+     "cas": 2
+    },
+    "cout_usd": {
+     "moyenne": 0.0,
+     "ic95": [
+      0.0,
+      0.0
+     ],
+     "cas": 2
+    },
+    "echec_technique": {
+     "moyenne": 0.0,
+     "ic95": [
+      0.0,
+      0.0
+     ],
+     "cas": 2
+    },
+    "nombre_respecte": {
+     "moyenne": 0.0,
+     "ic95": [
+      0.0,
+      0.0
+     ],
+     "cas": 1
+    }
+   },
+   "latence_p50_s": 0.0,
+   "latence_p95_s": 0.0,
+   "stabilite": {
+    "jaccard": null,
+    "cas_jaccard": 0,
+    "intention_constante": 1.0
+   },
+   "par_famille": {
+    "entreprise_poste": {
+     "routage": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "outil": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "precision": {
+      "moyenne": 1,
+      "ic95": [
+       1,
+       1
+      ],
+      "cas": 1
+     },
+     "precision_stricte": {
+      "moyenne": 0.6666666666666666,
+      "ic95": [
+       0.6666666666666666,
+       0.6666666666666666
+      ],
+      "cas": 1
+     },
+     "france": {
+      "moyenne": 0.8333333333333334,
+      "ic95": [
+       0.8333333333333334,
+       0.8333333333333334
+      ],
+      "cas": 1
+     },
+     "ndcg": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "reponse_utile": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "ids_inventes_par_le_modele": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "message_fidele": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "latence_s": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "tokens": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "cout_usd": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "echec_technique": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     }
+    },
+    "piege_nombre": {
+     "routage": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "outil": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "precision": {
+      "moyenne": 0.875,
+      "ic95": [
+       0.875,
+       0.875
+      ],
+      "cas": 1
+     },
+     "precision_stricte": {
+      "moyenne": 0.625,
+      "ic95": [
+       0.625,
+       0.625
+      ],
+      "cas": 1
+     },
+     "france": {
+      "moyenne": 0.875,
+      "ic95": [
+       0.875,
+       0.875
+      ],
+      "cas": 1
+     },
+     "ndcg": {
+      "moyenne": 0.966160367402725,
+      "ic95": [
+       0.966160367402725,
+       0.966160367402725
+      ],
+      "cas": 1
+     },
+     "reponse_utile": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "nombre_respecte": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "ids_inventes_par_le_modele": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "message_fidele": {
+      "moyenne": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "cas": 1
+     },
+     "latence_s": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "tokens": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "cout_usd": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     },
+     "echec_technique": {
+      "moyenne": 0.0,
+      "ic95": [
+       0.0,
+       0.0
+      ],
+      "cas": 1
+     }
+    }
+   }
+  }
+ },
+ "avant_apres": {
+  "precision": {
+   "cas": 3,
+   "avant": 1,
+   "apres": 1,
+   "difference": 0,
+   "ic95": [
+    0,
+    0
+   ],
+   "p": 1.0
+  },
+  "precision_stricte": {
+   "cas": 3,
+   "avant": 0.8,
+   "apres": 0.7777777777777778,
+   "difference": -0.022222222222222254,
+   "ic95": [
+    -0.33333333333333337,
+    0.2666666666666666
+   ],
+   "p": 1.0
+  },
+  "ndcg": {
+   "cas": 4,
+   "avant": 0.6296641965809918,
+   "apres": 0.6527356085722403,
+   "difference": 0.023071411991248514,
+   "ic95": [
+    0.0,
+    0.0661251781656437
+   ],
+   "p": 0.5085
+  },
+  "nombre_respecte": null,
+  "message_fidele": {
+   "cas": 4,
+   "avant": 0.75,
+   "apres": 0.75,
+   "difference": 0.0,
+   "ic95": [
+    -0.75,
+    0.75
+   ],
+   "p": 1.0
+  },
+  "reponse_utile": {
+   "cas": 4,
+   "avant": 0.75,
+   "apres": 0.75,
+   "difference": 0.0,
+   "ic95": [
+    0.0,
+    0.0
+   ],
+   "p": 1.0
+  },
+  "echec_technique": {
+   "cas": 4,
+   "avant": 0.25,
+   "apres": 0.25,
+   "difference": 0.0,
+   "ic95": [
+    0.0,
+    0.0
+   ],
+   "p": 1.0
+  },
+  "latence_s": {
+   "cas": 4,
+   "avant": 4.11625,
+   "apres": 5.80225,
+   "difference": 1.686,
+   "ic95": [
+    0.5567499999999999,
+    3.2982500000000003
+   ],
+   "p": 0.1335
+  }
+ },
+ "accord_juge_humain": null
+}

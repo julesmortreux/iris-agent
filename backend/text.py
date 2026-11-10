@@ -18,6 +18,42 @@ _OUT_OF_SCOPE = (
 SCOPE_REPLY = ("Je peux vous aider à trouver des contacts dirigeants et des chasseurs de tête "
                "dans le réseau du cabinet. Indiquez-moi un poste, une entreprise ou un secteur.")
 
+_NUMBER_WORDS = {'un': 1, 'une': 1, 'deux': 2, 'trois': 3, 'quatre': 4, 'cinq': 5, 'six': 6,
+                 'sept': 7, 'huit': 8, 'neuf': 9, 'dix': 10}
+_NOUNS = r'(?:contacts?|profils?|dirigeants?|dirigeantes?|personnes?|noms?|cabinets?|chasseurs?)'
+_NUMBER = r'(\d{1,2}|' + '|'.join(_NUMBER_WORDS) + r')'
+# « 3 contacts », « trois profils », « deux autres dirigeants » : au plus deux mots entre le nombre et le nom.
+_COUNT_RE = re.compile(r'\b' + _NUMBER + r'\s+(?:(?!chez\b|dans\b)\w+\s+){0,2}?' + _NOUNS + r'\b', re.IGNORECASE)
+_SINGLE_RE = re.compile(r'\b(?:un seul|une seule|1)\s+' + _NOUNS + r'\b', re.IGNORECASE)
+
+
+def _to_int(token: str) -> int:
+    return int(token) if token.isdigit() else _NUMBER_WORDS[token.lower()]
+
+
+def requested_count(message: str) -> int | None:
+    """Nombre de résultats explicitement demandé (« donne-moi 3 contacts »), sinon None.
+
+    « un » et « une » sont des articles : « un CFO » ne demande pas un seul résultat.
+    """
+    if _SINGLE_RE.search(message):
+        return 1
+    for match in _COUNT_RE.finditer(message):
+        count = _to_int(match.group(1))
+        if count >= 2:
+            return count
+    return None
+
+
+def fix_count_claims(message: str, shown: int) -> str:
+    """Corrige un nombre annoncé dans le texte quand il contredit le nombre de fiches affichées."""
+    def repl(match: re.Match) -> str:
+        token = match.group(1)
+        if token.lower() in ('un', 'une') or _to_int(token) == shown:
+            return match.group(0)
+        return str(shown) + match.group(0)[len(token):]
+    return _COUNT_RE.sub(repl, message) if shown else message
+
 
 def clean(text: str) -> str:
     """Retire emojis, tirets longs, titres markdown et lignes imitant une fiche contact."""
