@@ -27,6 +27,11 @@ QUAND NE PAS CHERCHER : salutation, remerciement, question sur toi ou sujet sans
 Tu ne peux pas inventer de contact : seuls les identifiants renvoyés par tes outils sont valables."""
 
 
+# Règle ajoutée après l'évaluation : sans elle, près d'un message sur deux décrivait
+# les profils avec des détails que les fiches ne montraient pas.
+NEUTRAL_INTRO_RULE = """RÈGLE SUR `message` : une ou deux phrases générales, sans décrire les profils retenus. N'y mets ni poste, ni entreprise, ni pays, ni nombre de profils, ni qualificatif sur leur parcours. Si aucun profil ne correspond exactement à la demande, dis-le simplement."""
+
+
 ROUTER_PROMPT = """Tu détermines l'intention du DERNIER message d'un membre adressé à Iris, une assistante qui recherche des contacts dirigeants et des chasseurs de tête. Les messages précédents te donnent le contexte.
 
 is_search = true si le membre veut trouver, lister ou obtenir des contacts, des dirigeants, des profils ou des chasseurs de tête : le message mentionne un poste (CEO, CFO, DRH...), une entreprise, un secteur ou le nom d'une personne à retrouver. Une demande de suite ("d'autres", "encore", "plus") n'est une recherche QUE si la réponse précédente de l'assistante présentait déjà des contacts.

@@ -112,3 +112,51 @@ async def test_si_le_routeur_echoue_on_tente_la_recherche(monkeypatch):
         reply = await agent.answer('un CFO chez Sanofi')
     assert [c['id'] for c in reply['contacts']] == ['vrai-1']
     assert reply['trace'].outcome == 'routeur_indisponible'
+
+
+async def test_le_nombre_demande_est_respecte(monkeypatch):
+    monkeypatch.setattr(api_client, 'search_contacts', _fake_search_contacts)
+    with agent.router_agent.override(model=_router(True)), \
+            agent.search_agent.override(model=_searcher(['vrai-1', 'vrai-2'], [])):
+        reply = await agent.answer('un seul contact chez Sanofi')
+    assert [c['id'] for c in reply['contacts']] == ['vrai-1']
+
+
+async def test_une_entreprise_demandee_n_est_pas_elargie_a_un_secteur(monkeypatch):
+    async def nothing(**kwargs):
+        return []
+    monkeypatch.setattr(api_client, 'search_contacts', nothing)
+
+    def drifting(messages: list[ModelMessage], info: AgentInfo) -> ModelResponse:
+        returns = sum(p.part_kind == 'tool-return' for m in messages for p in m.parts)
+        if returns == 0:
+            return ModelResponse(parts=[ToolCallPart('search_contacts', {'position': 'CFO', 'company': 'Airbus'})])
+        if returns == 1:
+            return ModelResponse(parts=[ToolCallPart('search_contacts', {'position': 'CFO', 'sector': 'automobile'})])
+        return ModelResponse(parts=[ToolCallPart(info.output_tools[0].name, {'message': 'Aucun profil.'})])
+
+    with agent.router_agent.override(model=_router(True)), \
+            agent.search_agent.override(model=FunctionModel(drifting)):
+        reply = await agent.answer('un CFO chez Airbus')
+    calls = reply['trace'].tool_calls
+    assert calls[0].get('refused') is None and calls[1]['refused'] is True
+    assert reply['contacts'] == []
+
+
+async def test_un_filtre_de_poste_sans_resultat_est_elargi(monkeypatch):
+    calls: list[dict] = []
+
+    async def api(**kwargs):
+        calls.append(kwargs)
+        return [] if kwargs.get('position') else list(CONTACTS)
+    monkeypatch.setattr(api_client, 'search_contacts', api)
+    seen: list = []
+    with agent.router_agent.override(model=_router(True)), \
+            agent.search_agent.override(model=_searcher(['vrai-1'], seen)):
+        reply = await agent.answer('un directeur financier chez Sanofi')
+
+    assert len(calls) == 2 and calls[1].get('position') is None      # relance sans le poste
+    assert reply['trace'].tool_calls[0]['broadened'] is True
+    tool_return = next(p for p in seen[-1][0][-1].parts if p.part_kind == 'tool-return')
+    assert 'info' in tool_return.content[0]                           # le modèle est prévenu
+    assert [c['id'] for c in reply['contacts']] == ['vrai-1']

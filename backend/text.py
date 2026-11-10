@@ -1,6 +1,7 @@
 """Nettoyage déterministe des textes produits par le modèle."""
 
 import re
+import unicodedata
 
 _EMOJI_RE = re.compile(
     '[\U0001F300-\U0001FAFF\U00002600-\U000027BF\U0001F000-\U0001F0FF'
@@ -25,6 +26,12 @@ _NUMBER = r'(\d{1,2}|' + '|'.join(_NUMBER_WORDS) + r')'
 # « 3 contacts », « trois profils », « deux autres dirigeants » : au plus deux mots entre le nombre et le nom.
 _COUNT_RE = re.compile(r'\b' + _NUMBER + r'\s+(?:(?!chez\b|dans\b)\w+\s+){0,2}?' + _NOUNS + r'\b', re.IGNORECASE)
 _SINGLE_RE = re.compile(r'\b(?:un seul|une seule|1)\s+' + _NOUNS + r'\b', re.IGNORECASE)
+
+
+def fold(text: str) -> str:
+    """Minuscules sans accents, pour comparer deux textes."""
+    text = unicodedata.normalize('NFD', text or '')
+    return ''.join(c for c in text if unicodedata.category(c) != 'Mn').lower()
 
 
 def _to_int(token: str) -> int:

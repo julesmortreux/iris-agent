@@ -145,8 +145,9 @@ async def search_contacts(
     sector: Optional[str] = None,
     refresh: bool = False,
     ranking: Ranking = 'score',
+    pool_size: int = MAX_CONTACTS,
 ) -> list[dict]:
-    """Recherche des contacts et renvoie au plus MAX_CONTACTS fiches, classées selon `ranking`.
+    """Recherche des contacts et renvoie au plus `pool_size` fiches, classées selon `ranking`.
 
     `refresh` active l'enrichissement des coordonnées, que l'API limite à 10 résultats.
     """
@@ -161,10 +162,10 @@ async def search_contacts(
 
     contacts = [map_contact(item) for item in items]
     if ranking == 'score':
-        contacts = rank(contacts)
+        contacts = rank(contacts, pool_size)
     elif ranking == 'random':
         random.Random(len(contacts)).shuffle(contacts)
-    contacts = contacts[:MAX_CONTACTS]
+    contacts = contacts[:pool_size]
     logger.info("search_contacts(%s, secteur=%s) : %d contacts", params, sector, len(contacts))
     return contacts
 

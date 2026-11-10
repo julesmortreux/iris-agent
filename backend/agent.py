@@ -22,8 +22,8 @@ from pydantic_ai.providers.mistral import MistralProvider
 from pydantic_ai.usage import UsageLimits
 
 from backend import api_client, config
-from backend.prompts import CHAT_PROMPT, ROUTER_PROMPT, SEARCH_PROMPT
-from backend.text import SCOPE_REPLY, clean, fix_count_claims, requested_count, within_scope
+from backend.prompts import CHAT_PROMPT, NEUTRAL_INTRO_RULE, ROUTER_PROMPT, SEARCH_PROMPT
+from backend.text import SCOPE_REPLY, clean, fix_count_claims, fold, requested_count, within_scope
 
 logger = logging.getLogger(__name__)
 
@@ -57,15 +57,19 @@ class Options:
     """Réglages d'une exécution. Les valeurs par défaut sont celles du produit."""
     ranking: api_client.Ranking = 'score'
     enforce_count: bool = True    # respecter le nombre de résultats demandé par le membre
-    strict_company: bool = True   # ne pas élargir à un secteur quand une entreprise est demandée
+    strict_company: bool = True   # ne pas quitter l'entreprise citée par le membre
     fix_claims: bool = True       # corriger un nombre annoncé qui contredit les fiches affichées
-    empty_search_limit: Optional[int] = 2  # recherches vides consécutives avant de conclure
+    empty_search_limit: Optional[int] = 3  # recherches vides consécutives avant de conclure
+    broaden_on_empty: bool = True  # si le filtre sur le poste ne donne rien, relancer sans ce filtre
+    neutral_intro: bool = True    # message d'introduction qui ne décrit pas les profils
+    pool_size: int = api_client.MAX_CONTACTS  # taille du lot transmis au modèle
 
 
 @dataclass
 class SearchDeps:
     """État d'une recherche, partagé entre les outils et le validateur."""
     exclude_ids: set[str]
+    message: str = ''
     options: Options = field(default_factory=Options)
     contacts_by_id: dict[str, dict] = field(default_factory=dict)
     hunters_by_id: dict[str, dict] = field(default_factory=dict)
@@ -143,15 +147,33 @@ async def search_contacts(
             return [{'info': f"Le membre a demandé l'entreprise « {locked} ». N'élargis pas la recherche à un "
                              "secteur ou à une autre entreprise. Si aucun contact ne convient, dis-le au membre "
                              "et propose-lui d'élargir. NE PRÉSENTE AUCUN contact d'une autre entreprise."}]
-        if company and not locked:
+        # Le verrou ne porte que sur une entreprise citée par le membre, pas sur un choix du modèle.
+        if company and not locked and fold(company) in fold(ctx.deps.message):
             ctx.deps.locked_company = company.lower()
 
     results = await api_client.search_contacts(
         name=name, position=position, company=company, sector=sector,
         refresh=config.ENRICH_ON_SEARCH, ranking=ctx.deps.options.ranking,
+        pool_size=ctx.deps.options.pool_size,
     )
     reachable = [c for c in results if c['linkedin'] or c['telephone'] or c['email']]
     fresh = [c for c in reachable if c['id'] and c['id'] not in ctx.deps.exclude_ids]
+    note: list[dict] = []
+    if not fresh and position and (company or sector) and ctx.deps.options.broaden_on_empty:
+        # L'API cherche le poste par sous-chaîne : « directeur commercial » ne trouve pas
+        # « Sales Director ». On relance sans le poste et le modèle fait le rapprochement.
+        results = await api_client.search_contacts(name=name, company=company, sector=sector,
+                                                   ranking=ctx.deps.options.ranking,
+                                                   pool_size=ctx.deps.options.pool_size)
+        reachable = [c for c in results if c['linkedin'] or c['telephone'] or c['email']]
+        fresh = [c for c in reachable if c['id'] and c['id'] not in ctx.deps.exclude_ids]
+        if fresh:
+            call['broadened'] = True
+            note = [{'info': f"Aucun contact joignable dont l'intitulé contient « {position} ». Voici les autres "
+                             "contacts joignables de cette recherche. Retiens UNIQUEMENT ceux dont le poste "
+                             "correspond à la demande du membre, synonymes et intitulés anglais compris "
+                             "(par exemple CFO, DAF et Finance Director désignent la même fonction). Si aucun "
+                             "ne correspond, ne présente aucun contact et dis-le au membre."}]
     call['returned'] = len(fresh)
     ctx.deps.empty_searches = 0 if fresh else ctx.deps.empty_searches + 1
     if not fresh:
@@ -162,7 +184,7 @@ async def search_contacts(
                          "Dis-le au membre et propose d'affiner ou d'élargir. NE PRÉSENTE AUCUN contact."}]
 
     ctx.deps.contacts_by_id.update((c['id'], c) for c in fresh)
-    return [compact(c) for c in fresh]
+    return note + [compact(c) for c in fresh]
 
 
 async def search_hunters(ctx: RunContext[SearchDeps], name: Optional[str] = None) -> list[dict]:
@@ -218,6 +240,11 @@ search_agent = Agent(
     tools=TOOLS, retries=2, model_settings=_settings,
 )
 search_agent.output_validator(keep_known_ids)
+
+
+@search_agent.instructions
+def _intro_rule(ctx: RunContext[SearchDeps]) -> str:
+    return NEUTRAL_INTRO_RULE if ctx.deps.options.neutral_intro else ''
 
 
 # Mise en forme
@@ -292,7 +319,7 @@ async def _chat(message: str, history: list[dict], trace: Trace) -> dict:
 
 
 async def _search(message: str, history: list[dict], exclude_ids: list[str], options: Options, trace: Trace) -> dict:
-    deps = SearchDeps(exclude_ids=set(exclude_ids), options=options,
+    deps = SearchDeps(exclude_ids=set(exclude_ids), options=options, message=message,
                       requested_count=requested_count(message) if options.enforce_count else None)
     trace.tool_calls = deps.tool_calls
     try:
