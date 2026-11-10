@@ -1,0 +1,18 @@
+services:
+  legacy-api:
+    build: .
+    command: ["gunicorn", "--bind", "0.0.0.0:5001", "--workers", "1", "legacy_api.app:app"]
+    environment:
+      LEGACY_API_TOKEN: demo-token
+      LEGACY_API_LATENCY_MS: "150"
+
+  iris:
+    build: .
+    ports:
+      - "5000:5000"
+    env_file: .env
+    environment:
+      LEGACY_API_BASE_URL: http://legacy-api:5001/api
+      LEGACY_API_TOKEN: demo-token
+    depends_on:
+      - legacy-api
