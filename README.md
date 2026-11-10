@@ -31,8 +31,6 @@ Elles expliquent la plupart des choix techniques.
 | **RGPD** : données personnelles de dirigeants | Modèles d'un éditeur européen, données traitées en Europe. Le modèle ne reçoit ni email ni téléphone. |
 | **Client non technique** | Chaque règle de classement doit pouvoir s'expliquer en une phrase, d'où un score lisible plutôt qu'un modèle opaque. |
 
-[JULES : AJOUTER ICI LES AUTRES CONTRAINTES, ex. raison du choix de Mistral, hébergement, délais]
-
 ## Architecture
 
 ```mermaid
@@ -175,7 +173,7 @@ Contre l'ordre aléatoire, le score gagne 0,11 de nDCG [+0,04 ; +0,18] et 17 poi
 
 Le validateur garantit les fiches, pas le texte d'introduction. Un juge LLM vérifie que ce texte n'affirme rien que les fiches ne montrent pas : autre modèle que celui qui a produit la réponse, grille explicite à quatre types de problèmes, température nulle, sortie structurée.
 
-Un juge n'a de valeur que comparé à un humain. Quinze réponses sont annotées à la main, à l'aveugle, dans `eval/annotations/a_annoter.csv`. L'accord et le kappa de Cohen sont rapportés dans le fichier de résultats.
+Un juge n'a de valeur que comparé à un humain. Quinze réponses sont tirées pour une annotation manuelle à l'aveugle (`eval/annotations/a_annoter.csv`). Le script calcule alors l'accord et le kappa de Cohen. Cette annotation est en cours : tant qu'elle n'est pas faite, le juge n'est pas validé.
 
 À la lecture des verdicts, le juge est sévère : il lui arrive de compter comme infidèle une formule vague. Le chiffre de 77 % est donc à prendre comme une borne basse, et la comparaison avant et après (même juge, mêmes règles) est plus fiable que la valeur absolue.
 
