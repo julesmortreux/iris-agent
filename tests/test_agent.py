@@ -46,7 +46,7 @@ def _searcher(final_ids: list[str], seen: list) -> FunctionModel:
         seen.append((messages, info))
         if not any(p.part_kind == 'tool-return' for p in messages[-1].parts):
             return ModelResponse(parts=[ToolCallPart('search_contacts', {'position': 'CFO', 'company': 'Sanofi'})])
-        args = {'message': 'Voici des profils — choisis.', 'contact_ids': final_ids}
+        args = {'message': 'Voici des profils \u2014 choisis.', 'contact_ids': final_ids}
         return ModelResponse(parts=[ToolCallPart(info.output_tools[0].name, args)])
     return FunctionModel(respond)
 

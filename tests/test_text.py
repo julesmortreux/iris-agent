@@ -3,7 +3,7 @@ from backend.text import SCOPE_REPLY, clean, within_scope
 
 def test_clean_retire_emojis_tirets_longs_et_titres():
     assert clean('### Bonjour \U0001F600') == 'Bonjour'
-    assert clean('Voici des profils — triés') == 'Voici des profils, triés'
+    assert clean('Voici des profils \u2014 triés') == 'Voici des profils, triés'
 
 
 def test_clean_retire_les_lignes_qui_imitent_une_fiche():
