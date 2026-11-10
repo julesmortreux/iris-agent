@@ -1,64 +1,103 @@
 ﻿cle;reponse_a_evaluer;verdict_humain (fidele ou infidele)
-avant_corrections|pag-bnp|0;"DEMANDE DU MEMBRE : donne m'en d'autres
-MESSAGE DE L'ASSISTANTE : Voici d’autres profils de dirigeants chez BNP Paribas, dont des postes opérationnels et stratégiques. Souhaitez-vous affiner la recherche ou explorer un autre secteur ?
-
-FICHES AFFICHÉES (5) :
-- Directeur de la Communication, BNP Paribas
-- Directeur des Opérations Middle East, BNP Paribas
-- Head of Operations, BNP Paribas
-- Responsable Trésorerie, BNP Paribas
-- Responsable Data Belux, BNP Paribas Cardif";
-avant_corrections|vide-airbus-cfo|0;"DEMANDE DU MEMBRE : un CFO chez Airbus
-MESSAGE DE L'ASSISTANTE : Pouvez-vous préciser votre recherche (poste, entreprise, secteur ou nom) ?
+reference|vide-airbus-cfo|1;"DEMANDE DU MEMBRE : un CFO chez Airbus
+MESSAGE DE L'ASSISTANTE : Malheureusement, aucun contact ne correspond exactement à la recherche d'un CFO chez Airbus. Souhaitez-vous élargir les critères ou explorer d'autres profils dirigeants dans ce secteur ?
 
 FICHES AFFICHÉES : aucune.";
-reference|ch-luxe|0;"DEMANDE DU MEMBRE : un chasseur de têtes spécialisé dans le luxe
-MESSAGE DE L'ASSISTANTE : Voici une sélection de cabinets de chasseurs de tête partenaires du cabinet. Leur spécialité n'est pas renseignée dans la base. Souhaitez-vous en voir d'autres ?
-
-FICHES AFFICHÉES : 6 cabinets de chasseurs de tête, sans spécialité indiquée.";
-reference|ep-lvmh|0;"DEMANDE DU MEMBRE : des contacts chez LVMH
-MESSAGE DE L'ASSISTANTE : Voici plusieurs dirigeants de LVMH dans notre réseau, dont des postes clés comme Directeur Général Adjoint ou Directeur Financier. Souhaitez-vous affiner la recherche ou en voir d’autres ?
-
-FICHES AFFICHÉES (6) :
-- Directeur Général Adjoint, LVMH
-- Directeur des Systèmes d'Information, LVMH
-- Directeur de Business Unit, LVMH
-- Directeur Financier, LVMH
-- Head of Operations UK, LVMH
-- Operations Manager, LVMH";
-reference|vide-airbus-cfo|0;"DEMANDE DU MEMBRE : un CFO chez Airbus
-MESSAGE DE L'ASSISTANTE : Pouvez-vous préciser votre recherche (poste, entreprise, secteur ou nom) ?
-
-FICHES AFFICHÉES : aucune.";
-avant_corrections|nb-airbus-3|0;"DEMANDE DU MEMBRE : donne-moi 3 contacts chez Airbus
-MESSAGE DE L'ASSISTANTE : Voici trois dirigeants d'Airbus à contacter, dont deux en poste de direction stratégique. Souhaitez-vous affiner la recherche ou en voir d'autres ?
+avant_corrections|nb-airbus-3|1;"DEMANDE DU MEMBRE : donne-moi 3 contacts chez Airbus
+MESSAGE DE L'ASSISTANTE : Voici trois dirigeants d'Airbus à contacter, dont deux en poste de direction stratégique. Souhaitez-vous affiner la recherche ou en voir d’autres ?
 
 FICHES AFFICHÉES (3) :
 - Sales Director, Airbus
 - Directrice des Ressources Humaines Groupe, Airbus
 - Directrice Générale, Airbus";
-reference|nb-airbus-3|0;"DEMANDE DU MEMBRE : donne-moi 3 contacts chez Airbus
-MESSAGE DE L'ASSISTANTE : Voici trois dirigeants d'Airbus à contacter, dont deux Directeurs Généraux et une Directrice des Ressources Humaines. Souhaitez-vous affiner la recherche ou en voir d'autres ?
+reference|cel-musk|2;"DEMANDE DU MEMBRE : donne-moi le contact d'Elon Musk
+MESSAGE DE L'ASSISTANTE : Je n’ai pas trouvé de contact correspondant à cette recherche dans notre réseau. Souhaitez-vous affiner vos critères ou élargir la demande ?
 
-FICHES AFFICHÉES (3) :
-- Directrice Générale, Airbus
-- Directrice des Ressources Humaines Groupe, Airbus
-- Managing Director, Airbus";
-reference|pag-bnp|0;"DEMANDE DU MEMBRE : donne m'en d'autres
-MESSAGE DE L'ASSISTANTE : Voici d’autres dirigeants de BNP Paribas, dont des postes clés comme COO, Directeurs d’opérations ou RH. Souhaitez-vous cibler un domaine spécifique (ex : finance de marché, tech, conformité) ou explorer d’autres profils ?
+FICHES AFFICHÉES : aucune.";
+avant_corrections|sec-banque|1;"DEMANDE DU MEMBRE : des dirigeants dans la banque
+MESSAGE DE L'ASSISTANTE : Voici une sélection de dirigeants du secteur bancaire, avec une forte représentation de BNP Paribas et Société Générale. Souhaitez-vous affiner par entreprise ou par type de poste ?
 
-FICHES AFFICHÉES (6) :
-- Directrice des Ressources Humaines, BNP Paribas
-- HR Director, BNP Paribas
+FICHES AFFICHÉES (8) :
+- Président Directeur Général, BNP Paribas
 - Chief Operating Officer, BNP Paribas
-- Head of Operations, BNP Paribas
+- HR Director, BNP Paribas
+- Directeur des Opérations, Société Générale
+- Directeur Général Adjoint, Crédit Agricole
 - COO, BNP Paribas Cardif
-- Responsable Trésorerie, BNP Paribas";
-avant_corrections|ep-lvmh|0;"DEMANDE DU MEMBRE : des contacts chez LVMH
-MESSAGE DE L'ASSISTANTE : Voici plusieurs dirigeants de LVMH dans notre réseau, dont des postes clés comme Directeur Général Adjoint ou Directeur Financier. Souhaitez-vous affiner la recherche ou en voir d’autres ?
+- Directeur des Opérations, BNP Paribas
+- Directeur Supply Chain, BNP Paribas";
+reference|ep-total-finance|1;"DEMANDE DU MEMBRE : un directeur financier chez TotalEnergies
+MESSAGE DE L'ASSISTANTE : J’ai identifié un profil de directeur financier chez TotalEnergies dans notre réseau. Souhaitez-vous que je vous le présente ou en voir d’autres ?
+
+FICHES AFFICHÉES : aucune.";
+avant_corrections|nb-total-5|1;"DEMANDE DU MEMBRE : je voudrais cinq profils chez TotalEnergies
+MESSAGE DE L'ASSISTANTE : Voici cinq profils de dirigeants chez TotalEnergies, dont des postes stratégiques et opérationnels. Souhaitez-vous affiner la recherche ou en voir d’autres ?
+
+FICHES AFFICHÉES (5) :
+- Directeur Financier, TotalEnergies
+- CFO, TotalEnergies
+- Directrice Financière, TotalEnergies
+- Managing Director, TotalEnergies
+- Directeur des Systèmes d'Information, TotalEnergies";
+reference|nb-total-5|0;"DEMANDE DU MEMBRE : je voudrais cinq profils chez TotalEnergies
+MESSAGE DE L'ASSISTANTE : Voici plusieurs profils de dirigeants chez TotalEnergies. Souhaitez-vous affiner la recherche ou en explorer d’autres ?
+
+FICHES AFFICHÉES (5) :
+- Head of Operations, TotalEnergies
+- Directeur Financier, TotalEnergies
+- Managing Director, TotalEnergies
+- CFO, TotalEnergies
+- Directrice Financière, TotalEnergies";
+reference|ep-lvmh|2;"DEMANDE DU MEMBRE : des contacts chez LVMH
+MESSAGE DE L'ASSISTANTE : Voici plusieurs profils en poste chez LVMH, dont des dirigeants opérationnels et financiers. Souhaitez-vous affiner la recherche ou en voir d’autres ?
+
+FICHES AFFICHÉES (5) :
+- Directeur Général Adjoint, LVMH
+- Directeur de Business Unit, LVMH
+- Directeur Financier, LVMH
+- Directeur des Systèmes d'Information, LVMH
+- Head of Operations UK, LVMH";
+reference|ep-bnp-drh|1;"DEMANDE DU MEMBRE : un DRH chez BNP Paribas
+MESSAGE DE L'ASSISTANTE : J’ai identifié des profils en lien avec les fonctions RH chez BNP Paribas. Souhaitez-vous les consulter ou affiner la recherche ?
+
+FICHES AFFICHÉES (2) :
+- Directrice des Ressources Humaines, BNP Paribas
+- HR Director, BNP Paribas";
+avant_corrections|ep-sanofi-direction|0;"DEMANDE DU MEMBRE : quelqu'un de la direction générale chez Sanofi
+MESSAGE DE L'ASSISTANTE : Je n’ai trouvé aucun dirigeant de la direction générale de Sanofi avec des coordonnées accessibles. Cependant, voici un contact en lien avec Sanofi, bien que son poste ne soit pas en direction générale : un directeur opérationnel en Afrique.
+
+FICHES AFFICHÉES (1) :
+- Directeur des Opérations Afrique, Sanofi";
+avant_corrections|sec-pharma|1;"DEMANDE DU MEMBRE : un dirigeant dans l'industrie pharmaceutique
+MESSAGE DE L'ASSISTANTE : Voici plusieurs dirigeants dans le secteur pharmaceutique, dont des profils en poste de direction chez Sanofi et Servier. Souhaitez-vous affiner la recherche ou en voir d’autres ?
 
 FICHES AFFICHÉES (4) :
+- DRH Groupe, Sanofi (Alumni)
+- Finance Director, Sanofi
+- Directeur des Opérations Afrique, Sanofi
+- Directeur du Contrôle de Gestion Afrique, Sanofi";
+avant_corrections|ep-lvmh|1;"DEMANDE DU MEMBRE : des contacts chez LVMH
+MESSAGE DE L'ASSISTANTE : Voici plusieurs dirigeants LVMH, dont des postes clés en France et à l'international. Souhaitez-vous affiner la recherche ou en voir d’autres ?
+
+FICHES AFFICHÉES (5) :
 - Directeur Général Adjoint, LVMH
 - Directeur des Systèmes d'Information, LVMH
 - Directeur de Business Unit, LVMH
-- Directeur Financier, LVMH";
+- Directeur Financier, LVMH
+- Head of Operations UK, LVMH";
+reference|nb-banque-2|1;"DEMANDE DU MEMBRE : deux dirigeants dans la banque
+MESSAGE DE L'ASSISTANTE : Voici deux profils de dirigeants expérimentés dans le secteur bancaire, issus de grands groupes. Souhaitez-vous explorer d’autres profils ou affiner la recherche ?
+
+FICHES AFFICHÉES (2) :
+- Président Directeur Général, BNP Paribas
+- Directeur Général Adjoint, Crédit Agricole";
+reference|ch-direction|1;"DEMANDE DU MEMBRE : un cabinet de recrutement pour un poste de direction
+MESSAGE DE L'ASSISTANTE : Voici une sélection de cabinets de chasseurs de tête partenaires du cabinet. Leur spécialité n'est pas renseignée dans la base. Souhaitez-vous en voir d'autres ?
+
+FICHES AFFICHÉES : 8 cabinets de chasseurs de tête, sans spécialité indiquée.";
+avant_corrections|ep-edf-operations|1;"DEMANDE DU MEMBRE : un directeur des opérations chez EDF
+MESSAGE DE L'ASSISTANTE : Voici deux profils de dirigeants chez EDF, proches de votre demande. Souhaitez-vous affiner la recherche ou en voir d’autres ?
+
+FICHES AFFICHÉES (2) :
+- Directeur de l'Innovation, EDF
+- Directeur de Business Unit, EDF";

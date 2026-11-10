@@ -71,11 +71,10 @@ def match_cards(cards: list[Card], contacts_by_id: dict[str, dict]) -> list[dict
 
 
 async def answer_free(message: str, history: list[dict], exclude_ids: list[str]) -> dict:
-    """Même parcours que la recherche du produit, sans sélection par identifiants ni validateur."""
+    """Mêmes outils et mêmes réglages que le produit ; seule la forme de la sortie change."""
     trace = agent.Trace(intent='recherche')
-    deps = agent.SearchDeps(exclude_ids=set(exclude_ids),
-                            options=agent.Options(enforce_count=False, strict_company=False, fix_claims=False,
-                                                  empty_search_limit=None))
+    deps = agent.SearchDeps(exclude_ids=set(exclude_ids), message=message,
+                            options=agent.Options())
     trace.tool_calls = deps.tool_calls
     start = time.perf_counter()
     try:

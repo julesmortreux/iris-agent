@@ -32,10 +32,10 @@ def _dcg(grades: list[int]) -> float:
     return sum((2 ** g - 1) / math.log2(rank + 2) for rank, g in enumerate(grades))
 
 
-def ndcg(proposed: list[int], ideal: list[int]) -> Optional[float]:
-    """nDCG@8 : qualité du choix et de l'ordre, rapportée au meilleur résultat possible."""
-    best = _dcg(sorted(ideal, reverse=True)[:K])
-    return _dcg(proposed[:K]) / best if best else None
+def ndcg(proposed: list[int], ideal: list[int], k: int = K) -> Optional[float]:
+    """nDCG@k : qualité du choix et de l'ordre, rapportée au meilleur résultat possible."""
+    best = _dcg(sorted(ideal, reverse=True)[:k])
+    return _dcg(proposed[:k]) / best if best else None
 
 
 def score_run(case: dict, rec: dict) -> dict:
@@ -58,7 +58,7 @@ def score_run(case: dict, rec: dict) -> dict:
             if not target.get('abroad') and 'name' not in target:
                 out['france'] = mean(TRUTH[i]['country'] == 'France' for i in ids if i in TRUTH) \
                     if any(i in TRUTH for i in ids) else None
-        out['ndcg'] = ndcg(grades, ideal)
+        out['ndcg'] = ndcg(grades, ideal, min(K, case.get('count', K)))
         # Réponse utile : au moins un contact pertinent proposé quand il en existe.
         if ideal:
             out['reponse_utile'] = float(any(g >= 1 for g in grades))

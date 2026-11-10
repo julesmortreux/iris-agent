@@ -38,14 +38,22 @@ CONTACT_CATEGORIES = RANKING_CATEGORIES | {'nom', 'pagination', 'piege_sans_resu
                                            'piege_email'}
 FREE_CATEGORIES = {'entreprise_poste', 'secteur', 'nom', 'synonymes', 'piege_sans_resultat', 'piege_celebrite'}
 
+# Portage fidèle de l'original : toutes les corrections issues de l'évaluation sont désactivées.
+PORTAGE_FIDELE = Options(enforce_count=False, strict_company=False, fix_claims=False, empty_search_limit=None,
+                         broaden_on_empty=False, neutral_intro=False)
+
 # variante -> (réglages, familles de cas jouées ; None = toutes)
 VARIANTS: dict[str, tuple[Options | None, set[str] | None]] = {
     'reference': (Options(), None),
-    'avant_corrections': (Options(enforce_count=False, strict_company=False, fix_claims=False,
-                                  empty_search_limit=None), CONTACT_CATEGORIES),
+    'avant_corrections': (PORTAGE_FIDELE, CONTACT_CATEGORIES),
     'fiches_libres': (None, FREE_CATEGORIES),
     'ordre_api': (Options(ranking='api'), RANKING_CATEGORIES),
     'ordre_aleatoire': (Options(ranking='random'), RANKING_CATEGORIES),
+    # Lot réduit à 10 contacts : reproduit la situation de production, où une recherche
+    # renvoie bien plus de contacts qu'on ne peut en transmettre au modèle.
+    'lot10_score': (Options(pool_size=10), RANKING_CATEGORIES),
+    'lot10_api': (Options(ranking='api', pool_size=10), RANKING_CATEGORIES),
+    'lot10_aleatoire': (Options(ranking='random', pool_size=10), RANKING_CATEGORIES),
 }
 JUDGED_VARIANTS = ('reference', 'avant_corrections')
 TRANSIENT = {'erreur', 'routeur_indisponible', 'conversation_indisponible'}
@@ -138,7 +146,7 @@ async def score_only(case: dict, reference: dict) -> dict:
         for c in results:
             if c['linkedin'] or c['telephone'] or c['email']:
                 seen.setdefault(c['id'], c)
-    ids = list(seen)[:agent.MAX_SHOWN]
+    ids = list(seen)[:min(agent.MAX_SHOWN, case.get('count', agent.MAX_SHOWN))]
     return {**reference, 'variant': 'score_seul', 'contact_ids': ids, 'message': '', 'usage': [],
             'latency_s': 0.0, 'rejected_ids': []}
 
@@ -273,6 +281,12 @@ async def main() -> None:
                                             per_case['reference'].get(name, {}))
             for name in ('precision', 'precision_stricte', 'ndcg', 'nombre_respecte', 'message_fidele',
                          'reponse_utile', 'echec_technique', 'latence_s')
+        }
+    if {'lot10_score', 'lot10_aleatoire'} <= set(variants):
+        results['score_contre_aleatoire_lot10'] = {
+            name: metrics.paired_comparison(per_case['lot10_aleatoire'].get(name, {}),
+                                            per_case['lot10_score'].get(name, {}))
+            for name in ('precision_stricte', 'ndcg')
         }
     results['accord_juge_humain'] = judge_agreement(records)
 

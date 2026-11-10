@@ -103,6 +103,17 @@ def render(results: dict) -> str:
                               ['precision', 'precision_stricte', 'ndcg', 'france', 'reponse_utile'])
         out.append('')
 
+    if 'lot10_score' in results['variantes']:
+        out += ['## Expérience 2 bis : même comparaison avec un lot réduit à 10 contacts', '']
+        out += _variant_table(results, ['lot10_score', 'lot10_api', 'lot10_aleatoire'],
+                              ['precision', 'precision_stricte', 'ndcg', 'france', 'reponse_utile'])
+        out.append('')
+        for name, c in (results.get('score_contre_aleatoire_lot10') or {}).items():
+            if c:
+                out.append(f"Score contre ordre aléatoire, {name}, test apparié sur {c['cas']} cas : différence "
+                           f"{c['difference']:+.3f} [{c['ic95'][0]:+.3f} ; {c['ic95'][1]:+.3f}], p = {c['p']:.3f}.")
+        out.append('')
+
     if results.get('avant_apres'):
         out += ['## Avant et après les corrections', '',
                 '| Métrique | Cas | Avant | Après | Différence [IC 95 %] | p (test apparié) |', '|---|---|---|---|---|---|']
