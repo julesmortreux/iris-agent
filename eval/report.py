@@ -1,5 +1,7 @@
 """Mise en forme des résultats de l'évaluation en tableaux Markdown."""
 
+from typing import Optional
+
 DEFINITIONS = {
     'routage': "Part des cas où l'intention détectée (recherche ou conversation) est la bonne.",
     'outil': "Part des cas où l'outil attendu a été appelé (ou aucun outil, quand aucun n'est attendu).",
@@ -42,7 +44,7 @@ def _fmt(name: str, value: float) -> str:
     return f'{100 * value:.0f} %'
 
 
-def _cell(name: str, m: dict | None) -> str:
+def _cell(name: str, m: Optional[dict]) -> str:
     if not m:
         return 'n/d'
     return f"{_fmt(name, m['moyenne'])} [{_fmt(name, m['ic95'][0])} ; {_fmt(name, m['ic95'][1])}]"

@@ -19,6 +19,7 @@ import random
 import threading
 from dataclasses import asdict
 from pathlib import Path
+from typing import Optional
 
 import yaml
 from werkzeug.serving import make_server
@@ -43,7 +44,7 @@ PORTAGE_FIDELE = Options(enforce_count=False, strict_company=False, fix_claims=F
                          broaden_on_empty=False, neutral_intro=False)
 
 # variante -> (réglages, familles de cas jouées ; None = toutes)
-VARIANTS: dict[str, tuple[Options | None, set[str] | None]] = {
+VARIANTS: dict[str, tuple[Optional[Options], Optional[set[str]]]] = {
     'reference': (Options(), None),
     'avant_corrections': (PORTAGE_FIDELE, CONTACT_CATEGORIES),
     'fiches_libres': (None, FREE_CATEGORIES),
@@ -174,7 +175,7 @@ def export_annotations(records: list[dict], queries: dict[str, str]) -> None:
             writer.writerow([f"{r['variant']}|{r['case']}|{r['run']}", text, ''])
 
 
-def judge_agreement(records: list[dict]) -> dict | None:
+def judge_agreement(records: list[dict]) -> Optional[dict]:
     """Accord entre le juge et l'annotation humaine, si le fichier a été rempli."""
     path = ANNOTATIONS / 'a_annoter.csv'
     if not path.exists():

@@ -6,6 +6,8 @@ Iris aide les membres d'un cabinet d'outplacement de dirigeants à trouver, dans
 
 Ce dépôt est la **version de démonstration** d'un agent que j'ai conçu et livré en production pour un client, en freelance. Le projet d'origine est confidentiel : le code a été réécrit, le client est remplacé par un cabinet fictif, et toutes les données sont générées. L'architecture, les contraintes et les choix de conception sont ceux du projet réel.
 
+Ce dépôt requiert **Python 3.10 ou plus récent**. La version en production chez le client est une variante compatible Python 3.9, figée sur pydantic-ai 0.8.1 et servie par uWSGI, car le serveur du client ne peut pas être mis à jour.
+
 ## Le problème
 
 Le réseau du cabinet compte plusieurs centaines de milliers de contacts, importés par les membres depuis leurs réseaux professionnels. La plateforme ne propose qu'un formulaire de filtres. Il faut savoir quoi chercher, et l'essentiel du réseau reste inexploité.
@@ -19,7 +21,7 @@ Elles expliquent la plupart des choix techniques.
 | Contrainte | Conséquence |
 |---|---|
 | **Plateforme ancienne en PHP**, sans chaîne de compilation front | Widget en JavaScript pur, un seul fichier, intégré par une balise `<script>`. Aucun framework. |
-| **Serveur de production ancien**, Python 3.9, serveur d'application imposé | Flask plutôt qu'un framework asynchrone, et un pont entre Flask et le code asynchrone de l'agent. En production, les bibliothèques sont figées sur d'anciennes versions compatibles. Cette démonstration utilise des versions récentes. |
+| **Serveur de production ancien** : Python 3.9, application servie par uWSGI | uWSGI est un serveur WSGI : il sert une application Flask, pas une application ASGI comme FastAPI. D'où Flask, avec un pont vers le code asynchrone de l'agent. En production, les bibliothèques sont figées sur les dernières versions compatibles avec Python 3.9. Cette démonstration utilise des versions récentes. |
 | **API sans filtre par secteur** | Un secteur est traduit en liste d'entreprises, interrogées en parallèle. |
 | **API qui cherche par sous-chaîne** | « directeur commercial » ne trouve pas « Sales Director ». L'outil élargit lui-même la recherche, puis le modèle fait le rapprochement. |
 | **Résultats sans ordre de pertinence**, tronqués par un paramètre `limit` | Un score déterministe classe le lot avant le modèle. |
@@ -72,7 +74,7 @@ Le service ne stocke rien : ni base de données, ni session. L'historique est po
 
 **Des délais partout.** Chaque étape a un délai maximal (12 s pour le routage, 18 s pour la conversation, 40 s pour la recherche, 30 s par appel au modèle) et une réponse de secours. Le nombre d'appels au modèle par recherche est plafonné à 6.
 
-**Flask avec une boucle asyncio dans un thread.** Le framework d'agents est asynchrone, le serveur imposé ne l'est pas. Une boucle unique tourne dans un thread de fond et reçoit toutes les exécutions. Elle démarre au premier message et se recrée après duplication du processus, pour supporter les serveurs qui chargent l'application avant de se dupliquer. Sans contrainte, je prendrais un framework asynchrone et ce pont disparaîtrait.
+**Flask avec une boucle asyncio dans un thread.** Le framework d'agents est asynchrone, alors que le serveur de production, uWSGI, ne sert que des applications WSGI. FastAPI y passerait par un adaptateur qui annulerait l'intérêt de l'asynchrone. Une boucle unique tourne dans un thread de fond et reçoit toutes les exécutions. Elle démarre au premier message et se recrée après duplication du processus, pour supporter les serveurs qui chargent l'application avant de se dupliquer. Sans cette contrainte, je prendrais FastAPI servi par Uvicorn, et ce pont disparaîtrait.
 
 **Le code garantit, le modèle propose.** Le nombre de contacts demandé, l'absence de doublon en pagination, le nombre annoncé dans le texte : tout ce qui peut être vérifié par du code l'est, plutôt que confié à une consigne.
 

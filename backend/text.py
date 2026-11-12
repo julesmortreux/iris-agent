@@ -2,6 +2,7 @@
 
 import re
 import unicodedata
+from typing import Optional
 
 _EMOJI_RE = re.compile(
     '[\U0001F300-\U0001FAFF\U00002600-\U000027BF\U0001F000-\U0001F0FF'
@@ -38,7 +39,7 @@ def _to_int(token: str) -> int:
     return int(token) if token.isdigit() else _NUMBER_WORDS[token.lower()]
 
 
-def requested_count(message: str) -> int | None:
+def requested_count(message: str) -> Optional[int]:
     """Nombre de résultats explicitement demandé (« donne-moi 3 contacts »), sinon None.
 
     « un » et « une » sont des articles : « un CFO » ne demande pas un seul résultat.
